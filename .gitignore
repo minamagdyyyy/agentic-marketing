@@ -1,8 +1,9 @@
 # Brand data — contains client/proprietary information
 brands/
 
-# Agent runtime directory
+# Agent runtime directories (installed dependencies, not source)
 .agents/
+.claude/
 
 # OS
 .DS_Store

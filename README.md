@@ -2,46 +2,67 @@
 
 A modular suite of Claude Code skills for full-stack marketing — from strategic planning through channel execution, measurement, and automation. Each skill is a specialist that can be invoked independently or routed to by the agency coordinator.
 
-## Quick Start
+## Installation
+
+Install all skills into your project with one command:
 
 ```bash
-# Start any marketing task — the agency routes you to the right specialist
-/marketing-agency
-
-# Jump straight to building a full marketing plan
-/marketing-sostac
-
-# Or invoke any specialist directly
-/marketing-seo
-/marketing-email
-/marketing-paid-ads
+npx skills add gnoviawan/agentic-marketing
 ```
+
+Or install globally (available in every project):
+
+```bash
+npx skills add gnoviawan/agentic-marketing --global
+```
+
+Install a specific skill only:
+
+```bash
+npx skills add gnoviawan/agentic-marketing --skill marketing-sostac
+npx skills add gnoviawan/agentic-marketing --skill marketing-seo
+```
+
+> Skills are installed to `.claude/skills/` in your project, or `~/.claude/skills/` globally. Requires [Claude Code](https://claude.ai/code).
+
+## Quick Start
+
+Once installed, invoke skills from Claude Code:
+
+```
+/marketing-agency    — Start here for any marketing task (routes to specialists)
+/marketing-sostac    — Build a full SOSTAC marketing plan
+/marketing-seo       — SEO audit, keyword research, content optimization
+/marketing-email     — Email sequences, drip campaigns, newsletters
+/marketing-paid-ads  — Google Ads, Meta Ads, campaign setup
+```
+
+---
 
 ## Project Structure
 
 ```
 .
-├── .claude/
-│   └── skills/                  # Claude Code skills
-│       ├── marketing-agency/    # Entry point — coordinator
-│       ├── marketing-sostac/    # Strategy — SOSTAC plan builder
-│       ├── marketing-analytics/ # Measurement & tracking
-│       ├── marketing-community/ # Community building
-│       ├── marketing-content/   # Content marketing
-│       ├── marketing-email/     # Email marketing
-│       ├── marketing-guerrilla/ # Growth hacking
-│       ├── marketing-influencer/# Influencer & creator
-│       ├── marketing-paid-ads/  # Paid advertising
-│       ├── marketing-pr/        # Digital PR & earned media
-│       ├── marketing-referral/  # Referral & affiliate
-│       ├── marketing-seo/       # SEO & organic search
-│       ├── marketing-social/    # Social media
-│       └── marketing-video/     # Video marketing
-├── brands/                      # Brand workspaces (gitignored)
+├── skills/                      # All skills (canonical source)
+│   ├── marketing-agency/        # Entry point — coordinator
+│   ├── marketing-sostac/        # Strategy — SOSTAC plan builder
+│   ├── marketing-analytics/     # Measurement & tracking
+│   ├── marketing-community/     # Community building
+│   ├── marketing-content/       # Content marketing
+│   ├── marketing-email/         # Email marketing
+│   ├── marketing-guerrilla/     # Growth hacking
+│   ├── marketing-influencer/    # Influencer & creator
+│   ├── marketing-paid-ads/      # Paid advertising
+│   ├── marketing-pr/            # Digital PR & earned media
+│   ├── marketing-referral/      # Referral & affiliate
+│   ├── marketing-seo/           # SEO & organic search
+│   ├── marketing-social/        # Social media
+│   └── marketing-video/         # Video marketing
+├── brands/                      # Brand workspaces (gitignored — client data)
 └── skills-lock.json             # Installed skill versions
 ```
 
-> **Note:** `.agents/` (agent runtime) and `brands/` (client data) are gitignored.
+> `.agents/`, `.claude/`, and `brands/` are gitignored.
 
 ---
 
@@ -71,7 +92,7 @@ Full SOSTAC marketing plan builder. Runs a deep guided interview through all 6 p
 
 Frameworks: SWOT+TOWS, PESTLE, Porter's Five Forces, TAM/SAM/SOM, JTBD, OKR, RACE, STP, Ansoff, Moore's positioning, AARRR, ICE scoring, 7P, RACI, PDCA, Balanced Scorecard.
 
-See [`marketing-sostac/README.md`](.claude/skills/marketing-sostac/README.md) for full documentation.
+See [`skills/marketing-sostac/README.md`](skills/marketing-sostac/README.md) for full documentation.
 
 ---
 
@@ -163,3 +184,9 @@ Skills use progressive context loading — only `SKILL.md` is in context when th
 1. Create `brands/{brand-slug}/brand-context.md` with the brand's core information
 2. Run `/marketing-sostac` and tell it the brand slug — it will handle the rest
 3. Brand files are local only (gitignored); back them up separately if needed
+
+---
+
+## Contributing
+
+Skills are plain Markdown — edit any `skills/{skill-name}/SKILL.md` or its `references/` files directly. The format follows the [Agent Skills open standard](https://agentskills.io/specification).
