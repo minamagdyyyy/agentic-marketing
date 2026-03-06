@@ -26,3 +26,6 @@ npm-debug.log*
 
 # Node
 node_modules/
+
+# Skill-creator eval workspaces
+*-workspace/
