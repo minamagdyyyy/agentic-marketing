@@ -1,6 +1,6 @@
 ---
 name: marketing-paid-ads
-description: "Paid advertising specialist covering Google Ads, Meta Ads (Facebook/Instagram), LinkedIn Ads, TikTok Ads, X/Twitter Ads, Pinterest Ads, and programmatic advertising. Use when the user wants to create ad campaigns, write ad copy, optimize ROAS, reduce CPA, set up conversion tracking, plan ad budgets, create audience targeting, design ad funnels, or any paid media task. Also triggers for PPC, SEM, display ads, retargeting, lookalike audiences, Performance Max, Advantage+, or ad creative optimization."
+description: "Paid advertising specialist covering Google Ads, Meta Ads (Facebook/Instagram), LinkedIn Ads, TikTok Ads, X/Twitter Ads, Pinterest Ads, and programmatic advertising. Use when the user wants blank-page paid media strategy, campaign planning, audience architecture, budgets, or creative direction; needs implementation or updates inside an existing local codebase for pixels, conversion tracking, landing pages, feeds, or ad-related instrumentation; or wants live website URL audits of landing pages, tracking readiness, offers, or funnel issues affecting paid performance. Also triggers for PPC, SEM, display ads, retargeting, lookalike audiences, Performance Max, Advantage+, or ad creative optimization."
 ---
 
 # Paid Advertising Specialist
@@ -11,24 +11,41 @@ For modern and emerging practices across all platforms, consult `./references/be
 
 ---
 
+## Starting Context Router
+
+Choose the starting mode before doing the work. Brand workspace context is preferred, but do not block progress if the user instead provides a real codebase or live URL.
+
+### Context A -- Blank Page / Strategy Work
+Use when the user needs paid media strategy, campaign architecture, audience planning, budget allocation, creative angle generation, or funnel design from scratch. Read brand and SOSTAC context first when available, then align recommendations to offer, economics, and channel role.
+
+### Context B -- Existing Local Codebase / Implementation Work
+Use when the user wants paid ads changes made or specified in an existing repository, storefront, app, CMS, or landing page codebase. Before proposing or making changes, deeply research the codebase: inspect the stack, landing page templates/components, feed or catalog setup, pixel and conversion tracking patterns, analytics instrumentation, consent handling, destination URLs, dependencies/integrations, and the validation path for confirming events and landing page behavior after implementation. Match existing implementation patterns before changing tracking or page experience.
+
+### Context C -- Live Website URL Audit
+Use when the user provides a public site or landing page URL for paid performance review. Audit the live experience first: offer clarity, landing page-message match, CTA flow, friction, mobile behavior, page speed, and observable tracking readiness. If brand files are missing, use the live site, offer, and landing page behavior as the working source of truth.
+
+---
+
 ## 0. Pre-Flight: Read Strategic Context
 
-Brand context shapes every recommendation -- without it, output will be generic and misaligned. Skipping this step is the single most common cause of wasted ad spend in generated plans.
+Brand context shapes every recommendation and remains the preferred source of truth. Skipping it when available is the single most common cause of wasted ad spend in generated plans.
 
-Before ANY paid ads work, read these files in order:
+Before ANY paid ads work, read these files in order when they are available:
 
 1. `./brands/{brand-slug}/brand-context.md` -- brand identity, audience, USP
 2. `./brands/{brand-slug}/product-marketing-context.md` -- deep positioning, customer language, objections (read if it exists)
 3. `./brands/{brand-slug}/sostac/01-situation.md` -- current state, budget, competitors
 4. `./brands/{brand-slug}/sostac/02-objectives.md` -- goals, KPIs, targets
 5. `./brands/{brand-slug}/sostac/03-strategy.md` -- target segments, positioning, phasing
-5. `./brands/{brand-slug}/sostac/04-tactics.md` -- channel plan, paid ads role, budget allocation
+6. `./brands/{brand-slug}/sostac/04-tactics.md` -- channel plan, paid ads role, budget allocation
 
 Read `./brands/{brand-slug}/sostac/00-auto-discovery.md` if it exists -- auto-discovery may have already gathered Meta Ad Library and Google Transparency data.
 
-If SOSTAC files do not exist, warn the user: "No strategic plan found. Paid ads work best when aligned with an overall strategy. I can proceed with general best practices, but recommend completing a SOSTAC plan first for targeted results and proper budget allocation."
+If SOSTAC files do not exist, warn the user: "No strategic plan found. Paid ads work best when aligned with an overall strategy. I can still proceed using the available codebase, live site, and observable offer and tracking setup, but recommend completing a SOSTAC plan for targeted results and proper budget allocation."
 
-Ground every recommendation in the brand's actual strategy, audience, and budget. Never give generic ad advice when brand-specific context is available.
+If brand files are missing but a codebase or live URL is available, continue with that as the working source of truth rather than blocking progress.
+
+Ground every recommendation in the strongest available context: brand strategy first, otherwise the existing codebase, live site, and observable offer and tracking setup. Never give generic ad advice when better context is available.
 
 ---
 
@@ -443,7 +460,7 @@ For complete deliverable templates, see `./references/deliverable-templates.md`.
 
 When the user requests paid ads work:
 
-1. **Read brand context and SOSTAC** (Section 0). Always.
+1. **Read brand context and SOSTAC** (Section 0) when available; otherwise proceed from the codebase, live site, tracking and analytics setup, existing creative assets, or user-provided context as appropriate.
 2. **Clarify scope**: Which platform? Campaign type? Funnel stage? New campaign or optimization?
 3. **Assess current state**: Check `./brands/{brand-slug}/campaigns/paid-ads/` for prior work.
 4. **Deliver actionable output**: Specific campaigns, copy, audiences, budgets -- never vague advice.

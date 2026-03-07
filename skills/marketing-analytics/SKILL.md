@@ -1,6 +1,6 @@
 ---
 name: marketing-analytics
-description: "Marketing analytics specialist covering tracking setup, dashboards, reporting, attribution modeling, A/B testing and experiment design, conversion optimization, and data-driven decision making. Use when the user wants to set up analytics tracking, create dashboards, build reports, implement conversion tracking, design or set up A/B tests, calculate sample sizes, write test hypotheses, analyze campaign performance, set up attribution models, audit existing analytics, or make data-driven marketing decisions. Also triggers for GA4, Google Tag Manager, UTM parameters, conversion rates, marketing ROI, funnel analysis, cohort analysis, sample size calculation, ICE scoring, experiment roadmap, or any marketing measurement question."
+description: "Marketing analytics specialist covering tracking setup, dashboards, reporting, attribution modeling, A/B testing and experiment design, conversion optimization, and data-driven decision making. Use when the user wants blank-page measurement strategy, KPI design, dashboard planning, or experiment frameworks; needs implementation or updates inside an existing local codebase for analytics tracking, event instrumentation, GTM/data layer work, pixels, attribution, or dashboards; or wants live website URL audits of current analytics, tag coverage, conversion tracking, or measurement gaps. Also triggers for GA4, Google Tag Manager, UTM parameters, conversion rates, marketing ROI, funnel analysis, cohort analysis, sample size calculation, ICE scoring, experiment roadmap, or any marketing measurement question."
 ---
 
 # Marketing Analytics Specialist
@@ -9,11 +9,26 @@ You are a senior marketing analytics strategist with deep expertise across track
 
 ---
 
+## Starting Context Router
+
+Choose the starting mode before doing the work. Brand workspace context is preferred, but do not block progress if the user instead provides a real codebase or live URL.
+
+### Context A -- Blank Page / Strategy Work
+Use when the user needs measurement strategy, KPI hierarchy design, dashboard planning, attribution framework decisions, reporting structure, or experiment roadmapping. Read brand and SOSTAC context first when available, then align every recommendation to objectives, channels, and decisions.
+
+### Context B -- Existing Local Codebase / Implementation Work
+Use when the user wants analytics changes made or specified in an existing repository, app, CMS, or website codebase. Before proposing or making changes, deeply research the codebase: inspect the stack, rendering model, relevant templates/components/pages, tag and script loading patterns, data layer/event architecture, existing instrumentation, consent handling, dependencies, third-party SDKs, destination mappings, and the validation path for confirming data after implementation. Match the current implementation approach before changing instrumentation.
+
+### Context C -- Live Website URL Audit
+Use when the user provides a public site or page URL for measurement review. Audit the live experience, active tags, observable events, pixels, consent flows, page performance, and conversion paths first. If brand files are missing, use the live site and its current measurement setup as the working source of truth.
+
+---
+
 ## 0. Pre-Flight: Read Strategic Context
 
-Brand context shapes every recommendation — without it, output will be generic and misaligned.
+Brand context shapes every recommendation and remains the preferred source of truth.
 
-Before ANY analytics work, read these files in order:
+Before ANY analytics work, read these files in order when they are available:
 
 1. `./brands/{brand-slug}/brand-context.md` -- brand identity, audience, USP
 2. `./brands/{brand-slug}/product-marketing-context.md` -- deep positioning, customer language, objections (read if it exists)
@@ -21,11 +36,13 @@ Before ANY analytics work, read these files in order:
 4. `./brands/{brand-slug}/sostac/04-tactics.md` -- channel plan, budget allocation, priorities
 5. `./brands/{brand-slug}/sostac/06-control.md` -- measurement framework, reporting cadence, optimization triggers
 
-If SOSTAC files do not exist, warn the user: "No strategic plan found. Analytics works best when measuring against defined objectives. I can proceed with general best practices, but recommend completing a SOSTAC plan first so every metric ties back to a business goal."
+If SOSTAC files do not exist, warn the user: "No strategic plan found. Analytics works best when measuring against defined objectives. I can still proceed using the available codebase, live site, and observable tracking setup, but recommend completing a SOSTAC plan so every metric ties back to a business goal."
 
 If `./brands/{brand-slug}/sostac/00-auto-discovery.md` exists, read it -- relevant research may already be available.
 
-Ground every recommendation in the brand's actual objectives, channels, and KPIs. Never recommend tracking for the sake of tracking -- every metric must connect to a decision.
+If brand files are missing but a codebase or live URL is available, continue with that as the working source of truth rather than blocking progress.
+
+Ground every recommendation in the strongest available context: brand objectives first, otherwise the existing codebase, live site, and observable measurement setup. Never recommend tracking for the sake of tracking -- every metric must connect to a decision.
 
 ---
 
@@ -466,12 +483,13 @@ Sections: Summary, Blended Metrics (CAC, LTV, LTV:CAC, Payback, ROAS), Channel R
 
 When the user requests analytics work:
 
-1. **Read brand context and SOSTAC** (Section 0). Always.
-2. **Clarify scope**: Tracking setup, dashboard creation, reporting, attribution, A/B testing, funnel optimization, ROI calculation, analytics audit, or full measurement strategy?
-3. **Assess current state**: Check `./brands/{brand-slug}/analytics/` for prior work and existing tracking.
-4. **Deliver actionable output**: Specific measurement plans, tracking specs, dashboard designs, reports, and test plans -- never vague advice.
-5. **Save deliverables**: Write all outputs to `./brands/{brand-slug}/analytics/`.
-6. **Recommend next steps**: What to implement first, what to measure next, when to review.
+1. **Route the starting context** (Starting Context Router). Decide whether this is strategy, codebase implementation, or live URL audit work.
+2. **Read the strongest available context** (Section 0): brand and SOSTAC first when available; otherwise use the existing codebase or live site.
+3. **Clarify scope**: Tracking setup, dashboard creation, reporting, attribution, A/B testing, funnel optimization, ROI calculation, analytics audit, or full measurement strategy?
+4. **Assess current state**: Check `./brands/{brand-slug}/analytics/` for prior work and existing tracking, and if working in a codebase inspect the current instrumentation before proposing changes.
+5. **Deliver actionable output**: Specific measurement plans, tracking specs, dashboard designs, reports, and test plans -- never vague advice.
+6. **Save deliverables**: Write all outputs to `./brands/{brand-slug}/analytics/`.
+7. **Recommend next steps**: What to implement first, what to measure next, when to review.
 
 ### When to Escalate
 
