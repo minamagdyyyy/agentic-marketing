@@ -40,6 +40,27 @@ Once installed, invoke skills from Claude Code:
 /marketing-retention — Churn reduction, cancel flows, win-back campaigns
 ```
 
+## Documentation
+
+Use the docs for workflow guidance, brand workspace conventions, and a page for every skill:
+
+- [`docs/README.md`](docs/README.md) — docs home
+- [`docs/getting-started.md`](docs/getting-started.md) — where to start and what to prepare
+- [`docs/workflows/new-brand-onboarding.md`](docs/workflows/new-brand-onboarding.md)
+- [`docs/workflows/sostac-planning.md`](docs/workflows/sostac-planning.md)
+- [`docs/workflows/implementation-after-sostac.md`](docs/workflows/implementation-after-sostac.md)
+- [`docs/workflows/quick-task-without-full-plan.md`](docs/workflows/quick-task-without-full-plan.md)
+- [`docs/reference/brand-workspace.md`](docs/reference/brand-workspace.md)
+- [`docs/reference/deliverables-and-file-locations.md`](docs/reference/deliverables-and-file-locations.md)
+- [`docs/skills/`](docs/skills/) — one page per skill
+
+If you're new to the suite, the recommended path is:
+1. Start with [`docs/getting-started.md`](docs/getting-started.md)
+2. Use `/marketing-agency` to select or create a brand
+3. Run `/marketing-sostac` if strategy is missing
+4. Create `/product-marketing-context` before scaling content and campaigns
+5. Move into the specialist skills for execution
+
 ---
 
 ## Project Structure
