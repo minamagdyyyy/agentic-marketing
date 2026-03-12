@@ -1,6 +1,11 @@
 ---
 name: marketing-guerrilla
 description: "Designs unconventional tactics, growth hacks, viral campaigns, and low-budget stunts. Triggers for 'growth hack', 'viral campaign', 'guerrilla marketing', 'unconventional tactic', 'low-budget marketing', or 'marketing stunt'."
+requires:
+  - skill: https://github.com/vercel-labs/agent-browser
+    name: agent-browser
+    description: Browser automation for live competitive research, SERP analysis, and authenticated site access
+    install: npx skills add https://github.com/vercel-labs/agent-browser --skill agent-browser
 ---
 
 # Guerrilla Marketing and Growth Hacking Specialist

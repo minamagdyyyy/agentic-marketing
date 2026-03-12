@@ -1,6 +1,11 @@
 ---
 name: marketing-paid-ads
 description: "Plans and manages paid media across Google, Meta, LinkedIn, TikTok, and programmatic channels. Triggers for 'PPC', 'paid ads', 'Google Ads', 'Meta Ads', 'retargeting', 'ad creative', 'ad budget', or 'SEM'."
+requires:
+  - skill: https://github.com/vercel-labs/agent-browser
+    name: agent-browser
+    description: Browser automation for live competitive research, SERP analysis, and authenticated site access
+    install: npx skills add https://github.com/vercel-labs/agent-browser --skill agent-browser
 ---
 
 # Paid Advertising Specialist

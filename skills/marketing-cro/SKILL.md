@@ -1,6 +1,11 @@
 ---
 name: marketing-cro
 description: "Optimizes landing pages, signup flows, onboarding, forms, popups, and paywalls for conversion. Triggers for 'CRO', 'conversion rate', 'landing page', 'signup flow', 'A/B test ideas', 'exit popup', 'form optimization', or 'user activation'."
+requires:
+  - skill: https://github.com/vercel-labs/agent-browser
+    name: agent-browser
+    description: Browser automation for live competitive research, SERP analysis, and authenticated site access
+    install: npx skills add https://github.com/vercel-labs/agent-browser --skill agent-browser
 ---
 
 # CRO Specialist

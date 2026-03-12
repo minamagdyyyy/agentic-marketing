@@ -1,6 +1,11 @@
 ---
 name: marketing-sostac
 description: "Executes the 6-phase SOSTAC planning framework (Situation, Objectives, Strategy, Tactics, Action, Control) via guided interview. Triggers for 'SOSTAC', 'situation analysis', 'marketing objectives', or when routed by marketing-agency."
+requires:
+  - skill: https://github.com/vercel-labs/agent-browser
+    name: agent-browser
+    description: Browser automation for live competitive research, SERP analysis, and authenticated site access
+    install: npx skills add https://github.com/vercel-labs/agent-browser --skill agent-browser
 ---
 
 # SOSTAC Marketing Plan Builder

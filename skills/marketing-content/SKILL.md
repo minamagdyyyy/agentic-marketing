@@ -1,6 +1,11 @@
 ---
 name: marketing-content
 description: "Creates blog posts, articles, whitepapers, case studies, ebooks, editorial calendars, and thought leadership content. Triggers for 'blog', 'article', 'whitepaper', 'case study', 'editorial calendar', or 'content strategy' — not landing page copy (use CRO)."
+requires:
+  - skill: https://github.com/vercel-labs/agent-browser
+    name: agent-browser
+    description: Browser automation for live competitive research, SERP analysis, and authenticated site access
+    install: npx skills add https://github.com/vercel-labs/agent-browser --skill agent-browser
 ---
 
 # Content Marketing Specialist

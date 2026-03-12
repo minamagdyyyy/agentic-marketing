@@ -28,4 +28,14 @@ If brand files are missing but a codebase or live URL is available, continue wit
 
 ## agent-browser Setup
 
-Before running browser-based research, check if `agent-browser` is available (`agent-browser --version`). If the command is not found, install it: `npm install -g agent-browser && npx playwright install chromium`. If installation fails, use `WebFetch` and `WebSearch` tools as alternatives for all research tasks.
+Before running browser-based research, check if `agent-browser` is available (`agent-browser --version`). If the command is not found, install it:
+
+```bash
+# Install the agent-browser skill (recommended)
+npx skills add https://github.com/vercel-labs/agent-browser --skill agent-browser
+
+# Or install the CLI directly
+npm install -g agent-browser && npx playwright install chromium
+```
+
+If installation fails, use `WebFetch` and `WebSearch` tools as alternatives for all research tasks.

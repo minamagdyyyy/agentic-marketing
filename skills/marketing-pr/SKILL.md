@@ -1,6 +1,11 @@
 ---
 name: marketing-pr
 description: "Handles media relations, press releases, journalist outreach, crisis comms, and reputation management. Triggers for 'press release', 'media outreach', 'journalist pitch', 'crisis comms', 'reputation management', or 'PR strategy'."
+requires:
+  - skill: https://github.com/vercel-labs/agent-browser
+    name: agent-browser
+    description: Browser automation for live competitive research, SERP analysis, and authenticated site access
+    install: npx skills add https://github.com/vercel-labs/agent-browser --skill agent-browser
 ---
 
 # Digital PR and Outreach Specialist

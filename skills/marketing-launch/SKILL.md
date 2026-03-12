@@ -1,6 +1,11 @@
 ---
 name: marketing-launch
 description: "Plans product launches, go-to-market execution, Product Hunt campaigns, and beta/early access programs. Triggers for 'product launch', 'GTM', 'go-to-market', 'Product Hunt', 'beta launch', 'early access', or 'launch checklist'."
+requires:
+  - skill: https://github.com/vercel-labs/agent-browser
+    name: agent-browser
+    description: Browser automation for live competitive research, SERP analysis, and authenticated site access
+    install: npx skills add https://github.com/vercel-labs/agent-browser --skill agent-browser
 ---
 
 # Product Launch and Go-to-Market Specialist

@@ -1,6 +1,11 @@
 ---
 name: marketing-seo
 description: "Handles technical SEO, content SEO strategy, local SEO, link building, pSEO, and GEO/AI search optimization. Triggers for 'SEO', 'keyword research', 'schema markup', 'crawlability', 'pSEO', 'GEO', 'search rankings', or 'link building' — not content writing (use content)."
+requires:
+  - skill: https://github.com/vercel-labs/agent-browser
+    name: agent-browser
+    description: Browser automation for live competitive research, SERP analysis, and authenticated site access
+    install: npx skills add https://github.com/vercel-labs/agent-browser --skill agent-browser
 ---
 
 # SEO Specialist

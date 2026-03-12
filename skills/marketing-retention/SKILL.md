@@ -1,6 +1,11 @@
 ---
 name: marketing-retention
 description: "Prevents churn through cancel flows, dunning sequences, win-back campaigns, and health scoring. Triggers for 'churn', 'cancel flow', 'dunning', 'win-back', 'failed payment', 'retention rate', or 'save offer'."
+requires:
+  - skill: https://github.com/vercel-labs/agent-browser
+    name: agent-browser
+    description: Browser automation for live competitive research, SERP analysis, and authenticated site access
+    install: npx skills add https://github.com/vercel-labs/agent-browser --skill agent-browser
 ---
 
 # Retention & Churn Prevention Specialist

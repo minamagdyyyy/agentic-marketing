@@ -1,6 +1,11 @@
 ---
 name: marketing-social
 description: "Manages organic social media strategy, social content creation, and on-platform community engagement. Triggers for 'social media', 'social calendar', 'hashtag strategy', 'follower growth', 'social content', 'UGC', or platform-specific organic questions."
+requires:
+  - skill: https://github.com/vercel-labs/agent-browser
+    name: agent-browser
+    description: Browser automation for live competitive research, SERP analysis, and authenticated site access
+    install: npx skills add https://github.com/vercel-labs/agent-browser --skill agent-browser
 ---
 
 # Social Media Marketing Specialist

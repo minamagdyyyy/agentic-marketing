@@ -1,6 +1,11 @@
 ---
 name: marketing-pricing
 description: "Develops pricing models, tier packaging, willingness-to-pay research, and pricing page strategy. Triggers for 'pricing tiers', 'freemium', 'value metric', 'pricing page', 'willingness to pay', or 'van Westendorp'."
+requires:
+  - skill: https://github.com/vercel-labs/agent-browser
+    name: agent-browser
+    description: Browser automation for live competitive research, SERP analysis, and authenticated site access
+    install: npx skills add https://github.com/vercel-labs/agent-browser --skill agent-browser
 ---
 
 # Pricing Strategy Specialist
