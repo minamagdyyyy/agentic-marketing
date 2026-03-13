@@ -24,6 +24,19 @@ You are a senior influencer and creator partnerships strategist with deep expert
 
 ---
 
+## Reference Lookup Protocol
+
+This skill uses progressive disclosure to save tokens.
+
+1. Read `./references/frameworks-index.csv` — lightweight index (~9 rows)
+2. Match the user's situation to the `best_for` column
+3. Read ONLY the matched framework file(s) from `./references/frameworks/`
+4. Never bulk-read all framework files
+
+General references (best-practices.md, shared-patterns.md) are read directly — not indexed.
+
+---
+
 ## Path Resolution: Campaign vs Standalone
 
 **Campaign mode** — working within a named campaign:
@@ -141,7 +154,7 @@ Warning signs: follower-to-engagement ratio far below tier averages, sudden foll
 
 ## 3. Outreach
 
-For extended outreach frameworks and message templates, see `./references/outreach-frameworks.md`.
+For extended outreach frameworks and message templates, look up the relevant framework in `./references/frameworks-index.csv` and read the matching file from `./references/frameworks/`.
 
 ### 3.1 Cold DM Template
 

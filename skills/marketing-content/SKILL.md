@@ -12,6 +12,33 @@ requires:
 
 You are a senior content marketing strategist with deep expertise across blog posts, longform articles, whitepapers, case studies, ebooks, infographics, podcasts, webinars, newsletters, and video scripts. You deliver actionable, modern content strategies grounded in the brand's SOSTAC plan.
 
+## Reference Lookup Protocol
+
+This skill uses **progressive disclosure** for reference frameworks. Do NOT read all framework files upfront.
+
+1. **Start here** -- read `./references/frameworks-index.csv` to see available frameworks with descriptions, best-for scenarios, and content phases.
+2. **Load on demand** -- only read the specific framework file (from the `file` column) when the current task requires that framework's details.
+3. **Selection guide** -- if unsure which framework fits, load `./references/frameworks/framework-selection-guide.md` for a quick-reference mapping of situations to frameworks.
+
+```
+references/
+  frameworks-index.csv          ← index: id, name, description, best_for, content_phase, file, tags
+  frameworks/
+    topic-cluster-model.md
+    content-funnel-mapping.md
+    skyscraper-technique.md
+    content-repurposing.md
+    content-scoring-model.md
+    editorial-calendar.md
+    case-study-framework.md
+    content-brief-template.md
+    ai-content-workflow.md
+    conversion-copywriting.md
+    framework-selection-guide.md
+```
+
+---
+
 ## Starting Context Router
 
 > See `./references/shared-patterns.md § Starting Context Router` for the three standard modes (blank-page, codebase, live URL). Apply the mode that matches the user's starting point, then continue with the specialist workflow below.
@@ -282,7 +309,7 @@ Trust: No spam promise, privacy link
 
 ## 7. Conversion Copywriting for Landing and Pricing Pages
 
-Conversion copywriting covers landing pages, pricing pages, and product pages -- every word serves conversion rather than education. For the complete conversion copywriting framework including page structure, CTA formulas, and headline frameworks, see `./references/frameworks.md`.
+Conversion copywriting covers landing pages, pricing pages, and product pages -- every word serves conversion rather than education. For the complete conversion copywriting framework including page structure, CTA formulas, and headline frameworks, look up `conversion-copywriting` in `./references/frameworks-index.csv` and load the referenced file.
 
 When producing landing or pricing page copy, save to `copy/landing-page-{page-name}-{YYYY-MM-DD}.md` within the resolved blog content path.
 
@@ -431,7 +458,7 @@ Track: total investment (time + tools + design + promotion), leads generated, co
 
 ## 13. Modern and Emerging Practices
 
-> For detailed AI content workflows, content scoring models, and production best practices, see `./references/best-practices.md` and `./references/frameworks.md`.
+> For detailed AI content workflows, content scoring models, and production best practices, see `./references/best-practices.md`. For content marketing frameworks, look up the relevant framework by task in `./references/frameworks-index.csv` and load the referenced file on demand.
 
 ### 13.1 AI-Assisted Content Creation
 
@@ -498,7 +525,7 @@ All content marketing deliverables save to the resolved path (see Path Resolutio
 
 **14.6 Lead Magnet Outline** (`lead-magnets/lead-magnet-{name}-{YYYY-MM-DD}.md`): Type, Target Audience, Problem, Outline, Landing Page Copy, Delivery Mechanism, Promotion Plan, Success Metrics.
 
-**14.7 Landing / Pricing Page Copy** (`copy/landing-page-{page-name}-{YYYY-MM-DD}.md`): Full page copy draft (all sections in order), strategic annotations, 2-3 headline alternatives, CTA alternatives. See `./references/frameworks.md` Section 10.
+**14.7 Landing / Pricing Page Copy** (`copy/landing-page-{page-name}-{YYYY-MM-DD}.md`): Full page copy draft (all sections in order), strategic annotations, 2-3 headline alternatives, CTA alternatives. Look up `conversion-copywriting` in `./references/frameworks-index.csv` and load the referenced file for the full framework.
 
 ---
 

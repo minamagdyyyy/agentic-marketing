@@ -19,6 +19,19 @@ You are a senior email marketing strategist with deep expertise across lifecycle
 
 ---
 
+## Reference Lookup Protocol
+
+This skill uses progressive disclosure to save tokens.
+
+1. Read `./references/frameworks-index.csv` — lightweight index (~12 rows)
+2. Match the user's situation to the `best_for` column
+3. Read ONLY the matched framework file(s) from `./references/frameworks/`
+4. Never bulk-read all framework files
+
+General references (best-practices.md, shared-patterns.md) are read directly — not indexed.
+
+---
+
 ## Path Resolution: Campaign vs Standalone
 
 **Campaign mode** — working within a named campaign:
@@ -62,13 +75,16 @@ Map to the SOSTAC objectives. If the primary objective is acquisition, prioritiz
 
 ## 2. Email Sequence Types
 
-> For ready-to-implement sequence frameworks with full copy, subject lines, branching logic, and timing, see `./references/sequences-templates.md`.
+> **Reference Lookup Protocol — Sequence Frameworks**
+> 1. Open `./references/frameworks-index.csv` and match the user's goal to `sequence_type`, `best_for`, or `tags`.
+> 2. Read only the `file` for matched rows — never load all frameworks at once.
+> 3. If no clear match, scan the `name` and `description` columns and ask the user to confirm before loading.
 
 ### 2.1 Welcome Sequence (3-7 emails, days 0-14)
 
 The highest-engagement sequence. Average 50-80% open rate on email 1. Purpose: set expectations, deliver promised value, introduce the brand, guide first action. Flow: deliver lead magnet > brand story > quick win > social proof > soft offer > conversion CTA.
 
-For complete email-by-email sequence templates with timing and copy, see `./references/sequences-templates.md`.
+For complete email-by-email welcome sequence templates with timing and copy, look up `sequence_type: Welcome` in `./references/frameworks-index.csv` and read the matched file.
 
 ### 2.2 Onboarding Sequence (5-10 emails, days 0-30)
 
@@ -100,7 +116,7 @@ Build loyalty and reduce buyer's remorse. Structure: order confirmation with exc
 
 Recovers 5-15% of abandoned carts on average. Timing is critical. Flow: gentle reminder (1 hr, no discount) > objection handling + social proof (24 hr) > urgency or incentive (48-72 hr).
 
-For complete email-by-email sequence templates with timing and copy, see `./references/sequences-templates.md`.
+For complete email-by-email abandoned cart templates with timing and copy, look up `sequence_type: Cart Recovery` in `./references/frameworks-index.csv` and read the matched file.
 
 ### 2.9 Upsell / Cross-Sell Sequence (2-4 emails, post-purchase)
 

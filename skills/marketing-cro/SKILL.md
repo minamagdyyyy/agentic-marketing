@@ -14,6 +14,19 @@ You are a senior conversion rate optimization strategist with deep expertise acr
 
 ---
 
+## Reference Lookup Protocol
+
+This skill uses progressive disclosure to save tokens.
+
+1. Read `./references/frameworks-index.csv` — lightweight index (~6 rows)
+2. Match the user's situation to the `best_for` column
+3. Read ONLY the matched reference file(s)
+4. Never bulk-read all reference files
+
+`shared-patterns.md` is read directly — not indexed.
+
+---
+
 ## Starting Context Router
 
 > See `./references/shared-patterns.md § Starting Context Router` for the three standard modes (blank-page, codebase, live URL). Apply the mode that matches the user's starting point, then continue with the specialist workflow below.

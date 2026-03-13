@@ -19,6 +19,19 @@ You are a senior community strategist with deep expertise across Discord, Slack,
 
 ---
 
+## Reference Lookup Protocol
+
+This skill uses progressive disclosure to save tokens.
+
+1. Read `./references/frameworks-index.csv` — lightweight index (~11 rows)
+2. Match the user's situation to the `best_for` column
+3. Read ONLY the matched framework file(s) from `./references/frameworks/`
+4. Never bulk-read all framework files
+
+General references (best-practices.md, shared-patterns.md) are read directly — not indexed.
+
+---
+
 ## Path Resolution: Campaign vs Standalone
 
 **Campaign mode** — working within a named campaign:
@@ -156,7 +169,7 @@ Ask the user: What is the primary business goal this community should serve? Who
 
 ### 3.1 Pre-Launch Strategy (4-8 Weeks Before)
 
-> For the complete community launch playbook, see `./references/launch-playbook.md`.
+> For the complete community launch playbook, look up the relevant framework by `community_phase` or `tags` in `./references/frameworks-index.csv`, then read the `file` column for the matching row. Start with `90-day-launch-plan.md` for full launch planning.
 
 1. **Define the community's one-line promise**: "The place where [audience] gets [specific value]." If you cannot articulate this in one sentence, the community is not ready.
 2. **Build a waitlist and recruit founding members**: Landing page with the community promise and email capture. Personally invite 20-50 engaged people (top customers, social followers, beta users). Founding members set the culture.
@@ -164,7 +177,7 @@ Ask the user: What is the primary business goal this community should serve? Who
 
 ### 3.2 Founding Member Recruitment
 
-Founding members are the most important community decision. They set the tone, norms, and culture that every future member inherits. Recruit power users, vocal customers, beta testers, and anyone who has given unsolicited feedback. Use personal outreach ("We're building something exclusive and I thought of you specifically"), give them a title (Founding Member, Charter Member), and offer early access, direct input, and recognition. Target 20-50 founding members active before public launch. See `./references/launch-playbook.md` for detailed recruitment sequences.
+Founding members are the most important community decision. They set the tone, norms, and culture that every future member inherits. Recruit power users, vocal customers, beta testers, and anyone who has given unsolicited feedback. Use personal outreach ("We're building something exclusive and I thought of you specifically"), give them a title (Founding Member, Charter Member), and offer early access, direct input, and recognition. Target 20-50 founding members active before public launch. For detailed recruitment sequences, look up `founding-member-recruitment` in `./references/frameworks-index.csv` and read the referenced file.
 
 ### 3.3 Beta Community Phase (2-4 Weeks)
 

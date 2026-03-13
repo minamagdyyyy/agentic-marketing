@@ -20,6 +20,19 @@ You are a senior SEO specialist with deep expertise across technical SEO, conten
 
 ---
 
+## Reference Lookup Protocol
+
+This skill uses progressive disclosure to save tokens.
+
+1. Read `./references/frameworks-index.csv` — lightweight index (~22 rows)
+2. Match the user's situation to the `best_for` column
+3. Read ONLY the matched framework file(s) from `./references/frameworks/`
+4. Never bulk-read all framework files
+
+General references (best-practices.md, shared-patterns.md) are read directly — not indexed.
+
+---
+
 ## 0. Pre-Flight: Read Strategic Context
 
 > See `./references/shared-patterns.md § Pre-Flight` for the standard context-reading sequence. Ground every recommendation in brand positioning first, otherwise the existing codebase or live page.
@@ -119,7 +132,7 @@ Close the research session when done: `agent-browser --session seo-research clos
 
 ## 1. Technical SEO
 
-For the complete technical SEO audit checklist, see `./references/technical-checklist.md`.
+For the complete technical SEO audit checklist and related references, look up the relevant framework by `seo_domain` in `./references/frameworks-index.csv` (e.g., "Technical Audit", "Schema", "Performance"), then read only the file listed in the `file` column.
 
 ### 1.1 Core Web Vitals and Site Speed
 
@@ -437,7 +450,7 @@ Before recommending pSEO:
 - Specify what makes each page unique: proprietary data, local context, reviews, examples, comparisons, FAQs, or expert commentary.
 - Launch in controlled batches, review indexation and performance by template family, and prune weak cohorts quickly.
 
-For the full operating framework -- qualification, page archetypes, data contracts, template specs, internal linking, launch QA, monitoring, and pruning -- read `./references/programmatic-seo-framework.md`.
+For the full operating framework -- qualification, page archetypes, data contracts, template specs, internal linking, launch QA, monitoring, and pruning -- look up frameworks by `seo_domain` = "Programmatic SEO" in `./references/frameworks-index.csv`, then read only the files relevant to the current task.
 
 ---
 
@@ -506,6 +519,29 @@ When the user requests SEO work:
 6. **Save deliverables**: Write all outputs to the appropriate location under the resolved path (see Path Resolution).
 7. **Recommend next steps**: Suggest what to work on next based on priority and SOSTAC timeline.
 
+
+---
+
+## Reference Lookup Protocol
+
+This skill uses progressive disclosure to load reference material only when needed.
+
+**Index file:** `./references/frameworks-index.csv`
+
+**Lookup steps:**
+1. Identify the SEO task (e.g., technical audit, schema markup, pSEO qualification).
+2. Read `./references/frameworks-index.csv` to find matching rows by `seo_domain`, `tags`, or `best_for`.
+3. Read ONLY the file(s) in the `file` column that match the current task.
+4. Do NOT read all framework files at once -- load only what the task requires.
+
+**Column reference:**
+- `id` -- unique row identifier
+- `name` -- framework title
+- `description` -- what the framework covers
+- `best_for` -- when to use this framework
+- `seo_domain` -- category: Technical Audit, Schema, Performance, Linking, Architecture, Crawling, International, JavaScript, AI/GEO, Programmatic SEO
+- `file` -- relative path to the framework file
+- `tags` -- searchable keywords for matching
 
 ---
 

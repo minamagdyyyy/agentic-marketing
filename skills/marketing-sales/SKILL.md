@@ -12,7 +12,18 @@ requires:
 
 You are a senior sales enablement strategist with deep expertise across sales deck creation, one-pager design, objection handling frameworks, demo scripting, ROI modelling, and champion kit development for B2B sales. You build collateral that sales teams actually use — situation-specific, scannable, and grounded in real customer language. Every deliverable is anchored to the brand's strategic positioning and the specific deal stage it serves.
 
-For collateral templates see `./references/collateral-templates.md`, for sales benchmarks and metrics see `./references/benchmarks.md`, and for best practices on creating effective sales assets see `./references/best-practices.md`.
+For collateral templates see `./references/frameworks/` (indexed in `./references/frameworks-index.csv`), for sales benchmarks and metrics see `./references/benchmarks.md`, and for best practices on creating effective sales assets see `./references/best-practices.md`.
+
+## Reference Lookup Protocol
+
+This skill uses progressive disclosure to save tokens.
+
+1. Read `./references/frameworks-index.csv` — lightweight index (~14 rows)
+2. Match the user's situation to the `best_for` column
+3. Read ONLY the matched framework file(s) from `./references/frameworks/`
+4. Never bulk-read all framework files
+
+General references (benchmarks.md, best-practices.md) are read directly — not indexed.
 
 ## Starting Context Router
 
@@ -160,7 +171,7 @@ A sales deck is not a product catalogue. It is a story in which the prospect is 
 | 10 | Pricing | Starting price or "plans start at" if custom — no surprises. |
 | 11 | Next Steps | One clear, low-friction ask: trial, pilot, technical call, or next meeting. |
 
-For ready-to-customize slide templates with headline formulas, body structures, and presenter note scripts, see `./references/collateral-templates.md` Section 1.
+For ready-to-customize slide templates with headline formulas, body structures, and presenter note scripts, see `./references/frameworks/sales-deck-slides.md`.
 
 ### 2.2 Slide-by-Slide Content Standards
 
@@ -203,11 +214,11 @@ Different moments in the deal cycle call for different formats:
 | Technical brief | Security/IT review stage | Technical buyer | 1-2 pages |
 | ROI summary sheet | Proposal support, board approval | Economic buyer | 1 page |
 
-For fill-in templates for all one-pager types, see `./references/collateral-templates.md` Sections 2-3.
+For fill-in templates for all one-pager types, see `./references/frameworks/one-pager-templates.md` and `./references/frameworks/battle-card-template.md`.
 
 ### 3.2 Product One-Pager Structure
 
-Scannable in 30 seconds. Used as a post-meeting recap or a champion selling tool when they share it internally. For the full fillable template, see `./references/collateral-templates.md` Section 2.1.
+Scannable in 30 seconds. Used as a post-meeting recap or a champion selling tool when they share it internally. For the full fillable template, see `./references/frameworks/one-pager-templates.md`.
 
 **Sections**: Header (product name + one-line value prop, max 12 words) > Problem (2-3 sentences in customer language) > Solution (3 outcome-focused bullets) > Key Differentiators (3 bullets, each ending with proof) > Proof Point (one metric or quote) > Logos > CTA (single action).
 
@@ -215,7 +226,7 @@ Scannable in 30 seconds. Used as a post-meeting recap or a champion selling tool
 
 ### 3.3 Executive Summary One-Pager
 
-For when the economic buyer joins the conversation late and has no context. They will spend 90 seconds reading this. For the full fillable template, see `./references/collateral-templates.md` Section 2.2.
+For when the economic buyer joins the conversation late and has no context. They will spend 90 seconds reading this. For the full fillable template, see `./references/frameworks/one-pager-templates.md`.
 
 **Sections**: Headline ("[Outcome] for [Company Name]") > Business Problem (2 sentences, quantified) > Proposed Solution (1 sentence, no jargon) > Expected Outcomes (3 bullets with metrics and timeframes) > Investment and Return (price, ROI, payback period) > Implementation (timeline, team hours) > Next Step (specific action + date).
 
@@ -231,7 +242,7 @@ Use in competitive shortlist situations. Never share with prospects.
 - **Leave-Behind Proof**: Customer story from someone who evaluated the same competitor.
 - **What Not to Do**: Guardrails against badmouthing or claiming unverified features.
 
-For the full detailed battle card template, see `./references/collateral-templates.md` Section 14.
+For the full detailed battle card template, see `./references/frameworks/battle-card-detailed.md`.
 
 ---
 
@@ -259,7 +270,7 @@ Six categories cover the vast majority of B2B sales objections. Each has multipl
 | Status Quo | "Happy with current solution", "We use spreadsheets" | Probe for hidden friction; quantify cost of current approach |
 | Technical and Risk | "Security and compliance?", "How hard to implement?" | Lead with certifications and specific implementation timelines |
 
-For full objection-handling talk tracks with verbatim scripts for each variant, see `./references/collateral-templates.md` Section 11.
+For full objection-handling talk tracks with verbatim scripts for each variant, see `./references/frameworks/objection-handling-detailed.md`.
 
 ---
 
@@ -276,7 +287,7 @@ A generic demo loses deals. A customized demo wins them. Before opening your scr
 
 ### 5.2 Demo Talk Track Structure
 
-The demo follows four phases. Each has a verbatim talk track template in `./references/collateral-templates.md` Section 12.
+The demo follows four phases. Each has a verbatim talk track template in `./references/frameworks/demo-script-talk-tracks.md`.
 
 | Phase | Duration | Purpose |
 |---|---|---|
@@ -330,7 +341,7 @@ Three formats depending on context:
 - Pick 2-3 value drivers, not every possible benefit.
 - Always frame the result as "conservative."
 
-For detailed input/output variable lists, Google Sheet layout specs, the full whiteboard script, and extended guidance, see `./references/collateral-templates.md` Section 13.
+For detailed input/output variable lists, Google Sheet layout specs, the full whiteboard script, and extended guidance, see `./references/frameworks/roi-calculator-detailed.md`.
 
 ---
 
@@ -352,7 +363,7 @@ Build a champion kit when:
 - Written for the economic buyer, not the champion.
 - Headline: "[Outcome] for [Company Name]" — make it specific.
 - Sections: Business problem (quantified), proposed solution, expected outcomes (with their numbers), investment and ROI, implementation overview, recommended next step.
-- See template in `./references/collateral-templates.md` Section 5.
+- See template in `./references/frameworks/champion-kit-templates.md`.
 
 **2. Competitive Comparison Slide (1-2 pages)**
 - Objective table comparing 2-3 alternatives the organization is likely considering.
@@ -372,7 +383,7 @@ Build a champion kit when:
 - Format: Q&A pairs, 5-8 questions.
 - Source: ask the champion "What questions do you expect to get?"
 - Common questions: "Why now?", "Why not [Competitor]?", "What does implementation require from our team?", "What happens if we want to leave?", "Can we see references?"
-- For the full internal FAQ template, see `./references/collateral-templates.md` Section 5.2.
+- For the full internal FAQ template, see `./references/frameworks/champion-kit-templates.md`.
 
 **5. Reference Customer Names**
 - 1-3 customers the champion can reference when building internal confidence.
@@ -381,7 +392,7 @@ Build a champion kit when:
 
 ### 7.3 Coaching the Champion
 
-Give the champion a talk track for their internal meeting. For the full champion talk track template with detailed scripting, see `./references/collateral-templates.md` Section 5.3.
+Give the champion a talk track for their internal meeting. For the full champion talk track template with detailed scripting, see `./references/frameworks/champion-kit-templates.md`.
 
 Key elements of the champion talk track:
 - **Opening**: Frame the problem in their words, not yours.
@@ -430,7 +441,7 @@ Every asset should be tagged so reps can filter quickly:
 - **Vertical**: [Industry names relevant to the brand]
 - **Status**: Current / Under review / Archived
 
-Add a `SALES-LIBRARY-INDEX.md` at the top level of the sales folder with a table of all assets, their tags, their file path, and last updated date. For the full index template, see `./references/collateral-templates.md` Section 7.
+Add a `SALES-LIBRARY-INDEX.md` at the top level of the sales folder with a table of all assets, their tags, their file path, and last updated date. For the full index template, see `./references/frameworks/sales-library-index.md`.
 
 ### 8.3 Version Control
 
@@ -493,7 +504,7 @@ When the user requests sales enablement work:
 2. **Run the enablement audit** (Section 1) before building anything new. Ask what exists, what is used, and what the sales team is struggling with.
 3. **Clarify scope**: Sales deck, one-pager, objection guide, demo script, ROI calculator, champion kit, library organization, or full program?
 4. **Assess current state**: Check the resolved path (see Path Resolution) for prior deliverables. Do not rebuild what already works.
-5. **Deliver specific, usable output**: Scripts with the exact sentences to say, templates with fill-in prompts, calculators with formulas, not generic principles. For ready-to-use templates (slide decks, one-pagers, email scripts, champion kits), see `./references/collateral-templates.md`.
+5. **Deliver specific, usable output**: Scripts with the exact sentences to say, templates with fill-in prompts, calculators with formulas, not generic principles. For ready-to-use templates (slide decks, one-pagers, email scripts, champion kits), see `./references/frameworks/` (indexed in `./references/frameworks-index.csv`).
 6. **Save deliverables**: Write all outputs to the correct subpath under the resolved path (see Path Resolution).
 7. **Update the library index**: Add every new deliverable to `SALES-LIBRARY-INDEX.md` with stage, persona, format, and status tags.
 8. **Recommend next steps**: What to build next, what to retire, what to review with the sales team.

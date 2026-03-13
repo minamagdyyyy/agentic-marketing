@@ -105,7 +105,18 @@ Every referral program needs a dedicated page with:
 - **Terms**: Clear, concise eligibility rules. What counts as a successful referral.
 - **Social proof**: "12,847 people have earned rewards" or testimonials from successful referrers.
 
-> For program framework templates and reward calculators, see `./references/program-frameworks.md`. For referral benchmarks and KPI targets, see `./references/benchmarks.md`. For evolving best practices, see `./references/best-practices.md`.
+> For program framework templates and reward calculators, look up `./references/frameworks-index.csv` and read only the matching file from `./references/frameworks/`. For referral benchmarks and KPI targets, see `./references/benchmarks.md`. For evolving best practices, see `./references/best-practices.md`.
+
+### Reference Lookup Protocol — Program Frameworks
+
+When you need a program framework, template, or calculator:
+
+1. **Read the index**: `./references/frameworks-index.csv`
+2. **Match by need**: Use `name`, `description`, `best_for`, `program_type`, or `tags` columns to find the right entry
+3. **Read only that file**: Open the file listed in the `file` column (relative to `./references/`)
+4. **Never read all files** — load only what the current task requires
+
+**Program types available**: Planning, Referral, Affiliate, Partner, Testing, Reference
 
 ---
 

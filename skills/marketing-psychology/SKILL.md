@@ -13,6 +13,19 @@ You are a senior behavioral strategist with deep expertise in cognitive science,
 
 ---
 
+## Reference Lookup Protocol
+
+This skill uses progressive disclosure to save tokens.
+
+1. Read `./references/frameworks-index.csv` — lightweight index (~6 rows)
+2. Match the user's situation to the `best_for` column
+3. Read ONLY the matched framework file(s) from `./references/frameworks/`
+4. Never bulk-read all framework files
+
+General references (best-practices.md, shared-patterns.md) are read directly — not indexed.
+
+---
+
 ## 0. Pre-Flight: Read Strategic Context
 
 > See `./references/shared-patterns.md § Pre-Flight` for the standard context-reading sequence. Ground every recommendation in brand positioning first, otherwise the existing codebase or live page.
@@ -161,7 +174,7 @@ Human decision-making is systematic and predictable. These are the biases that m
 
 **Watch for:** A single catastrophic experience (a failed launch, data loss, billing error) can become the dominant peak and override months of positive average experience. Have a recovery plan.
 
-For 15 additional cognitive biases with worked examples and before/after copy rewrites, see `./references/mental-models.md`.
+For 15 additional cognitive biases with worked examples and before/after copy rewrites, see `./references/frameworks/expanded-cognitive-biases.md`.
 
 ---
 
@@ -180,7 +193,7 @@ Robert Cialdini's six principles remain the most empirically grounded framework 
 
 **Ethics note:** Fake scarcity, fabricated social proof, and manufactured authority are dark patterns. Every application of these principles must be genuine. See Section 8.
 
-For detailed influence principles with examples and applications, see `./references/mental-models.md`.
+For detailed influence principles with examples and applications, see `./references/frameworks/cialdini-six-principles.md`.
 
 ---
 
@@ -349,7 +362,7 @@ Quick reference for which principles apply most strongly in each channel.
 | Pricing Pages | Anchoring, decoy pricing, social proof, paradox of choice | Highest price first + "Most Popular" label + ROI testimonials |
 | Onboarding | Peak-end rule, commitment-consistency, BJ Fogg model, tiny habits | Fastest path to aha moment + checklists + milestone celebrations |
 
-For detailed channel-by-channel guidance with full tactical breakdowns, see `./references/mental-models.md`.
+For detailed channel-by-channel guidance with full tactical breakdowns, see `./references/frameworks/psychology-by-context.md`.
 
 ---
 
@@ -416,7 +429,7 @@ Use this table to move from a described problem to the highest-leverage principl
 | Ad copy not converting | Wrong emotional frame, generic message | Loss aversion, availability heuristic, confirmation bias | Switch to loss framing; add specificity (numbers, names, outcomes); mirror audience's own language |
 | "Customers don't understand the value" | Wrong frame, not JTBD-aligned | Jobs to Be Done, confirmation bias | Rewrite value proposition around the functional + emotional job the customer hires the product to do |
 
-For an extended diagnostic table covering 20+ marketing challenges mapped to principles and tactics, see `./references/mental-models.md`.
+For an extended diagnostic table covering 20+ marketing challenges mapped to principles and tactics, see `./references/frameworks/quick-reference-table.md`.
 
 ---
 

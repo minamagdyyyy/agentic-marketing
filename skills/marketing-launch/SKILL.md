@@ -12,6 +12,19 @@ requires:
 
 You are a senior product launch strategist with deep expertise across go-to-market planning, ORB channel coordination, Product Hunt campaigns, press outreach, launch content creation, and ongoing announcement cadence. You deliver coordinated, phased launches grounded in the brand's SOSTAC plan and real audience intelligence.
 
+## Reference Lookup Protocol
+
+This skill uses progressive disclosure to save tokens.
+
+1. Read `./references/frameworks-index.csv` — lightweight index (~6 rows)
+2. Match the user's situation to the `best_for` column
+3. Read ONLY the matched framework file(s) from `./references/frameworks/`
+4. Never bulk-read all framework files
+
+General references (best-practices.md, shared-patterns.md) are read directly — not indexed.
+
+---
+
 ## Starting Context Router
 
 > See `./references/shared-patterns.md § Starting Context Router` for the three standard modes (blank-page, codebase, live URL). Apply the mode that matches the user's starting point, then continue with the specialist workflow below.
@@ -199,7 +212,7 @@ For Tier 1 launches, execute across five phases. Each phase has specific goals a
 | 4. Early Access | T-2 weeks to T-1 day | Open publicly; finalize PH gallery; coordinate supporter list; schedule all content; final QA. | All content scheduled. Team briefed. PH submission ready. Supporter email drafted. |
 | 5. Full Launch | Launch Day | Maximum coordinated push across all channels. Convert attention into relationships. | See Section 6 for execution. |
 
-For the full pre-launch and launch day task checklists, see `./references/launch-checklist.md`.
+For the full pre-launch and launch day task checklists, look up the appropriate framework by `launch_phase` in `./references/frameworks-index.csv` and read the corresponding file from `./references/frameworks/`.
 
 ---
 
@@ -213,7 +226,7 @@ Key decision: Product Hunt works best when the product serves makers/founders/de
 
 ## 5. Launch Content Creation
 
-Create all content before launch day. Every piece should be reviewed and approved at least 5 days before launch. For full templates and structural guides for each content type, see `./references/launch-checklist.md` Section 6.
+Create all content before launch day. Every piece should be reviewed and approved at least 5 days before launch. For full templates and structural guides for each content type, see `./references/frameworks/launch-content-templates.md`.
 
 | Content Type | Summary | Bridge |
 |---|---|---|
@@ -251,7 +264,7 @@ Launch day is coordinated, not improvised. Every action has a time and an owner.
 | 5:00pm | End-of-day update post | Founder | X, LinkedIn, PH |
 | 6:00pm | Internal launch debrief: signups, traffic, PH position, press coverage | All | Internal |
 
-For the minute-by-minute launch day checklist with monitoring dashboards, see `./references/launch-checklist.md` Section 2.
+For the minute-by-minute launch day checklist with monitoring dashboards, see `./references/frameworks/launch-day-checklist.md`.
 
 ### 6.2 Real-Time Monitoring
 
@@ -277,7 +290,7 @@ Track these during launch day:
 
 ## 7. Post-Launch: Day 1 through Week 4
 
-The launch is not the end. The first 30 days determine whether launch momentum converts into sustainable growth. For the full post-launch task checklist, see `./references/launch-checklist.md` Section 3.
+The launch is not the end. The first 30 days determine whether launch momentum converts into sustainable growth. For the full post-launch task checklist, see `./references/frameworks/post-launch-checklist.md`.
 
 ### 7.1 Days 1-7: Capture and Convert
 
@@ -458,7 +471,7 @@ When the user requests launch work:
 |---|---|
 | "Plan our launch" | Full launch strategy + ORB plan + five-phase timeline + launch brief |
 | "We're launching on Product Hunt" | Product Hunt brief (see `./references/product-hunt-playbook.md`) + supporter outreach + launch day schedule |
-| "Write our launch content" | Blog post + email announcement + social posts per platform (templates in `./references/launch-checklist.md` Section 6) |
+| "Write our launch content" | Blog post + email announcement + social posts per platform (templates in `./references/frameworks/launch-content-templates.md`) |
 | "What metrics should we track?" | Section 9 applied to their SOSTAC objectives |
 | "Help with our announcement cadence" | Section 8 cadence plan applied to their product roadmap |
 | "We just launched -- what now?" | Section 7 post-launch plan from current day forward |
@@ -479,7 +492,13 @@ When the user requests launch work:
 
 | File | Contents |
 |---|---|
-| `./references/launch-checklist.md` | Pre-launch checklists (T-8 weeks through T-1 day), launch day minute-by-minute checklist, post-launch checklists, per-channel content checklists, ongoing cadence checklists, launch content templates |
+| `./references/frameworks-index.csv` | Index of all launch checklist frameworks -- look up by `launch_phase` to find the right file |
+| `./references/frameworks/pre-launch-checklist.md` | Pre-launch checklists: T-8 weeks through T-1 day with strategy, alpha, beta, early access gates, and final checks |
+| `./references/frameworks/launch-day-checklist.md` | Launch day minute-by-minute execution timeline with monitoring dashboard |
+| `./references/frameworks/post-launch-checklist.md` | Post-launch checklists: Day 1 through Week 4 capture, activation, retention, and consolidation |
+| `./references/frameworks/per-channel-content-checklist.md` | Per-channel content requirements and quality checks for all Tier 1 launch channels |
+| `./references/frameworks/ongoing-announcement-cadence.md` | Ongoing announcement cadence checklists for Tier 2, Tier 3, and quarterly launches |
+| `./references/frameworks/launch-content-templates.md` | Launch content templates: blog post, email announcement, social posts, and press release structures |
 | `./references/launch-phases.md` | Detailed five-phase timeline: actions, participants, and gate criteria for each phase |
 | `./references/product-hunt-playbook.md` | Full Product Hunt strategy: fitness assessment, hunter selection, gallery preparation, supporter coordination, launch day execution, milestones |
 

@@ -24,6 +24,34 @@ You are a senior digital PR strategist with deep expertise across media relation
 
 ---
 
+## Reference Lookup Protocol
+
+> **Pitch templates and frameworks** have been split into individual files for progressive disclosure.
+>
+> **Index**: `./references/frameworks-index.csv`
+> **Files**: `./references/frameworks/{file}`
+>
+> **How to use**:
+> 1. Read `./references/frameworks-index.csv` to find the right framework by `pitch_type`, `best_for`, or `tags`.
+> 2. Load only the specific file(s) needed for the current task from `./references/frameworks/`.
+> 3. Do NOT load all framework files at once -- load only what the task requires.
+>
+> **Pitch type quick reference**:
+> | Need | pitch_type filter | Key file(s) |
+> |---|---|---|
+> | Cold email to journalist | Email Outreach | `cold-pitch-template.md`, `pitch-types.md` |
+> | Follow-up after pitch | Email Outreach | `follow-up-sequence.md` |
+> | Press announcement | Media Relations | `press-release-template.md` |
+> | Interview preparation | Media Relations | `spokesperson-preparation.md` |
+> | HARO / source request | Email Outreach | `haro-response-template.md` |
+> | Podcast guest pitch | Podcasts | `podcast-pitch-template.md` |
+> | Conference speaking | Speaking | `speaking-pitch-template.md` |
+> | Crisis response | Crisis | `crisis-statement-templates.md` |
+> | Pre-send quality check | Reference | `pitch-checklist.md` |
+> | Media kit / press page | Media Relations | `media-kit-checklist.md` |
+
+---
+
 ## Path Resolution: Campaign vs Standalone
 
 **Campaign mode** — working within a named campaign:
@@ -109,7 +137,7 @@ Digital PR is the most sustainable link building strategy. Bridge to marketing-s
 
 Build from Tier 3-4 upward. Early wins build a portfolio that unlocks higher tiers.
 
-> For pitch email templates and outreach scripts, see `./references/pitch-templates.md`. For PR benchmarks and KPI targets, see `./references/benchmarks.md`. For evolving best practices, see `./references/best-practices.md`.
+> For pitch email templates and outreach scripts, look up the appropriate framework by `pitch_type` in `./references/frameworks-index.csv` and load the specific file from `./references/frameworks/`. For PR benchmarks and KPI targets, see `./references/benchmarks.md`. For evolving best practices, see `./references/best-practices.md`.
 
 ---
 
@@ -198,7 +226,7 @@ Targeted pitch for high-value stories. Wire only when broad distribution or comp
 
 ### 4.1 Email Pitch Templates
 
-All pitches follow the same structure: compelling subject line, personalized opening referencing recent work, the story with 2-3 key details/data points, what you can offer (data, interview, exclusive), brief signature. Full template library with copy-paste examples lives in `./references/pitch-templates.md`.
+All pitches follow the same structure: compelling subject line, personalized opening referencing recent work, the story with 2-3 key details/data points, what you can offer (data, interview, exclusive), brief signature. Full template library lives in `./references/frameworks/` -- look up the right template by `pitch_type` in `./references/frameworks-index.csv` (e.g., `cold-pitch-template.md`, `pitch-types.md`).
 
 **Exclusive Offer**: Subject: "Exclusive: {newsworthy claim}". Offer unpublished data or announcement. Explain fit for their beat. Bullet key details. Offer exclusive access, expert commentary, or interview.
 
@@ -414,7 +442,7 @@ All PR deliverables save to the resolved path (see Path Resolution above).
 
 **Press Release** (`press-releases/press-release-{slug}-{YYYY-MM-DD}.md`): Section 3.1 structure with distribution plan.
 
-**Pitch Templates** (`pitch-templates-{YYYY-MM-DD}.md`): Exclusive, data story, expert commentary, trend, product launch pitches customized per campaign.
+**Pitch Templates** (`pitch-templates-{YYYY-MM-DD}.md`): Exclusive, data story, expert commentary, trend, product launch pitches customized per campaign. Base templates are in `./references/frameworks/` (indexed via `./references/frameworks-index.csv`).
 
 **Media List** (`media-lists/media-list-{campaign}-{YYYY-MM-DD}.md`): Section 2.1 template with outreach status.
 
@@ -436,7 +464,7 @@ All PR deliverables save to the resolved path (see Path Resolution above).
 ## Campaign mode:
 ./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/channels/pr/content/
   pr-strategy-{YYYY-MM-DD}.md
-  pitch-templates-{YYYY-MM-DD}.md
+  pitch-templates-{YYYY-MM-DD}.md          # customized from ./references/frameworks/
   press-releases/
     press-release-{slug}-{YYYY-MM-DD}.md
   media-lists/
@@ -447,7 +475,7 @@ All PR deliverables save to the resolved path (see Path Resolution above).
 ## Standalone mode (default for evergreen work):
 ./brands/{brand-slug}/channels/pr/content/
   pr-strategy-{YYYY-MM-DD}.md
-  pitch-templates-{YYYY-MM-DD}.md
+  pitch-templates-{YYYY-MM-DD}.md          # customized from ./references/frameworks/
   crisis-plan-{YYYY-MM-DD}.md
   media-kit-{YYYY-MM-DD}.md
   press-releases/

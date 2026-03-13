@@ -9,6 +9,19 @@ You build and maintain `product-marketing-context.md` — the deep positioning r
 
 The document lives at `./brands/{brand-slug}/product-marketing-context.md`. It complements (not replaces) `brand-context.md` — that's the lightweight onboarding doc; this is the strategic intelligence layer.
 
+## Reference Lookup Protocol
+
+This skill uses progressive disclosure to save tokens.
+
+1. Read `./references/frameworks-index.csv` — lightweight index (~1 row)
+2. Match the user's situation to the `best_for` column
+3. Read ONLY the matched reference file(s)
+4. Never bulk-read all reference files
+
+`shared-patterns.md` is read directly — not indexed.
+
+---
+
 ## Starting Context Router
 
 Before building or updating this document, quickly identify the strongest context the user is starting from:

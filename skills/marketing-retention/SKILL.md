@@ -135,7 +135,7 @@ Cancel button --> [Pause Gate] --> [Exit Survey (4-6 reasons)] --> [Dynamic Offe
   --> [Post-Cancel Sequence] win-back emails start (Section 5)
 ```
 
-See `./references/cancel-flow-templates.md` for full confirmation page copy, post-cancel email, and offer decision tree.
+See `./references/frameworks/cancel-confirmation-copy.md` for full confirmation page copy and post-cancel email. See `./references/frameworks/offer-decision-tree.md` for the offer decision tree.
 
 ### 2.2 Exit Survey Design
 
@@ -157,7 +157,7 @@ See `./references/cancel-flow-templates.md` for full confirmation page copy, pos
 | 5 | I had a technical issue | Trigger immediate support escalation |
 | 6 | Something else | Route to text field + general offer |
 
-See `references/cancel-flow-templates.md` for exact microcopy for each option.
+See `./references/frameworks/exit-survey-copy.md` for exact microcopy for each option.
 
 ### 2.3 Dynamic Offer Logic
 
@@ -285,7 +285,7 @@ Sequence triggered automatically when a customer drops to Yellow:
 - Day 7: Direct offer of a 1:1 session ("30 minutes to unlock more from [Brand]")
 - Day 14: If no engagement, escalate to Red-tier intervention
 
-See `references/cancel-flow-templates.md` for email copy outlines.
+See `./references/frameworks/proactive-retention-emails.md` for email copy outlines.
 
 **Red tier -- Multi-channel intervention**
 
@@ -355,7 +355,7 @@ The dunning sequence runs in parallel with Smart Retry logic. Each email should 
 | Day 14 | No update | Final warning | Last chance to update |
 | Day 21 | Grace period expires | Neutral, confirmatory | Reactivate if cancelled |
 
-Full email body copy and subject lines for all 6 emails are in `references/cancel-flow-templates.md`.
+Full email body copy and subject lines for all 6 emails are in `./references/frameworks/dunning-email-sequence.md`.
 
 **High-value account escalation:**
 - Accounts above $500 MRR: add phone or chat outreach at Day 7
@@ -416,7 +416,7 @@ Do not send the same win-back message to all churned customers. Segment first.
 
 For high-value churned customers, add a fourth personal outreach (phone or video) between Email 2 and Email 3.
 
-See `references/cancel-flow-templates.md` for full email copy outlines.
+See `./references/frameworks/win-back-email-sequence.md` for full email copy outlines.
 
 ### 5.3 Win-Back Offers
 
@@ -530,6 +530,28 @@ Retention work surfaces signals that should trigger other specialists. When anal
 
 When escalating from retention, provide: the specific cohort or segment affected, churn reason category (voluntary/involuntary/implicit), quantified impact (MRR at risk), and any pattern in timing or trigger.
 
+
+---
+
+## Reference Lookup Protocol
+
+When you need cancel flow, dunning, win-back, or proactive retention copy:
+
+1. Read `./references/frameworks-index.csv` to find the right file by `retention_stage` or `tags`
+2. Load only the specific file from `./references/frameworks/` that matches the task
+3. Do NOT load all framework files at once -- load only what the current task requires
+
+| Task | Load This File |
+|---|---|
+| Exit survey design or audit | `frameworks/exit-survey-copy.md` |
+| Cancel flow offer logic | `frameworks/dynamic-offer-templates.md` |
+| Confirmation page or post-cancel email | `frameworks/cancel-confirmation-copy.md` |
+| Dunning / payment recovery emails | `frameworks/dunning-email-sequence.md` |
+| Win-back campaign emails | `frameworks/win-back-email-sequence.md` |
+| Proactive health score outreach | `frameworks/proactive-retention-emails.md` |
+| Offer routing logic quick reference | `frameworks/offer-decision-tree.md` |
+| Subject line selection | `frameworks/subject-line-reference.md` |
+| Cancel flow optimisation testing | `frameworks/cancel-flow-ab-testing.md` |
 
 ---
 
