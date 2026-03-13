@@ -1,6 +1,6 @@
 ---
 name: marketing-video
-description: "Plans video strategy, scripts, and optimization for YouTube, TikTok, Reels, and video ads. Triggers for 'video strategy', 'YouTube', 'video script', 'Reels script', 'video SEO', 'thumbnail', or 'video ad script'."
+description: "Plans video strategy, scripts, and optimization for YouTube, TikTok, Reels, and video ads. Triggers for 'video strategy', 'YouTube', 'video script', 'Reels script', 'video SEO', 'thumbnail', 'video ad script', 'webinar', 'Loom', 'explainer video', 'product demo video', 'short-form video', or 'video content calendar'."
 requires:
   - skill: https://github.com/vercel-labs/agent-browser
     name: agent-browser
@@ -21,6 +21,23 @@ You are a senior video marketing strategist with deep expertise across short-for
 ## 0. Pre-Flight: Read Strategic Context
 
 > See `./references/shared-patterns.md § Pre-Flight` for the standard context-reading sequence. Ground every recommendation in brand positioning first, otherwise the existing codebase or live page.
+
+---
+
+## Path Resolution: Campaign vs Standalone
+
+**Campaign mode** — working within a named campaign:
+  → Save to `./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/channels/video/content/`
+  → Read campaign strategy at `./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/strategy.md`
+
+**Standalone mode** — evergreen or independent work:
+  → Save to `./brands/{brand-slug}/channels/video/content/`
+
+**Legacy fallback** — old directory structure detected:
+  → Save to `./brands/{brand-slug}/content/video/`
+  → Suggest migration to new structure
+
+If unsure which mode, ask: "Is this part of a specific campaign, or standalone work?"
 
 ---
 
@@ -381,7 +398,7 @@ Record podcasts with video. Extract 30-90 second clips of best moments for short
 
 ## 10. Outputs and Deliverables
 
-All video marketing deliverables save to `./brands/{brand-slug}/content/video/`.
+All video marketing deliverables save to the resolved path (see Path Resolution above).
 
 ### 10.1 Video Script (`scripts/script-{slug}-{YYYY-MM-DD}.md`)
 
@@ -408,7 +425,17 @@ Sections: Video Meta (platform, length, type, audience), Scene Breakdown (per sc
 ## 11. File Organization
 
 ```
-./brands/{brand-slug}/content/video/
+## Campaign mode:
+./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/channels/video/content/
+  video-calendar-{YYYY-MM}.md
+  youtube-strategy-{YYYY-MM-DD}.md
+  scripts/
+    script-{slug}-{YYYY-MM-DD}.md
+  briefs/
+    video-brief-{slug}-{YYYY-MM-DD}.md
+
+## Standalone mode (default for evergreen work):
+./brands/{brand-slug}/channels/video/content/
   video-calendar-{YYYY-MM}.md
   youtube-strategy-{YYYY-MM-DD}.md
   scripts/
@@ -431,9 +458,9 @@ When the user requests video marketing work:
 
 1. **Read brand context and SOSTAC** (Section 0) when available, then continue from the best available context.
 2. **Clarify scope**: Which platform(s)? Short-form, long-form, live, ads, or full strategy? Scripting, production, or optimization?
-3. **Assess current state**: Check `./brands/{brand-slug}/content/video/` for prior deliverables.
+3. **Assess current state**: Check the resolved path (see Path Resolution) for prior deliverables.
 4. **Deliver actionable output**: Specific scripts, calendars, strategies, briefs -- never vague advice.
-5. **Save deliverables**: Write all outputs to `./brands/{brand-slug}/content/video/`.
+5. **Save deliverables**: Write all outputs to the resolved path (see Path Resolution).
 6. **Recommend next steps**: What to produce first, what to test, when to review performance.
 
 ### When to Escalate

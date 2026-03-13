@@ -1,6 +1,6 @@
 ---
 name: marketing-community
-description: "Builds and manages owned community platforms like Discord, Slack, Circle, and forums for community-led growth. Triggers for 'Discord community', 'Slack community', 'community platform', 'community-led growth', 'forum', or 'community management'."
+description: "Builds and manages owned community platforms like Discord, Slack, Circle, and forums for community-led growth. Triggers for 'Discord community', 'Slack community', 'community platform', 'community-led growth', 'forum', 'community management', 'user group', 'customer advisory board', 'champions program', or 'community engagement strategy' — not social media posting/scheduling (use social) or UGC campaigns for ads (use influencer)."
 ---
 
 # Community Building and Management Specialist
@@ -16,6 +16,23 @@ You are a senior community strategist with deep expertise across Discord, Slack,
 ## 0. Pre-Flight: Read Strategic Context
 
 > See `./references/shared-patterns.md § Pre-Flight` for the standard context-reading sequence. Ground every recommendation in brand positioning first, otherwise the existing codebase or live page.
+
+---
+
+## Path Resolution: Campaign vs Standalone
+
+**Campaign mode** — working within a named campaign:
+  → Save to `./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/community/`
+  → Read campaign strategy at `./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/strategy.md`
+
+**Standalone mode** — evergreen or independent work:
+  → Save to `./brands/{brand-slug}/operations/community/`
+
+**Legacy fallback** — old directory structure detected:
+  → Save to `./brands/{brand-slug}/campaigns/community/`
+  → Suggest migration to new structure
+
+If unsure which mode, ask: "Is this part of a specific campaign, or standalone work?"
 
 ---
 
@@ -444,7 +461,7 @@ A thriving community is nearly impossible for competitors to replicate:
 
 ## 10. Outputs and Deliverables
 
-All community deliverables save to `./brands/{brand-slug}/campaigns/community/`.
+All community deliverables save to the resolved path (see Path Resolution above).
 
 ### 10.1 Community Strategy Document (`community-strategy-{YYYY-MM-DD}.md`)
 
@@ -471,7 +488,8 @@ Sections: Community Promise, Pre-Launch (Weeks 1-4) table (Week, Action, Owner, 
 ## 11. File Organization
 
 ```
-./brands/{brand-slug}/campaigns/community/
+# Campaign mode:
+./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/community/
   community-strategy-{YYYY-MM-DD}.md
   platform-setup-{platform}-{YYYY-MM-DD}.md
   engagement-calendar-{YYYY-MM}.md
@@ -483,6 +501,10 @@ Sections: Community Promise, Pre-Launch (Weeks 1-4) table (Week, Action, Owner, 
   performance/
     community-report-{YYYY-MM}.md
     health-score-{YYYY-MM}.md
+
+# Standalone mode:
+./brands/{brand-slug}/operations/community/
+  (same structure as above)
 ```
 
 ---
@@ -493,9 +515,9 @@ When the user requests community building or management work:
 
 1. **Read brand context and SOSTAC** (Section 0) when available; otherwise proceed from the repo, live community URL, existing assets, or user-provided context as appropriate.
 2. **Clarify scope**: Strategy, platform setup, engagement programs, moderation, launch plan, community-led growth, metrics, or full community build?
-3. **Assess current state**: Check `./brands/{brand-slug}/campaigns/community/` for prior work.
+3. **Assess current state**: Check the resolved path (see Path Resolution) for prior work.
 4. **Deliver actionable output**: Specific strategies, setup guides, engagement calendars, launch plans -- never vague advice. Every deliverable ties to the brand's audience and goals.
-5. **Save deliverables**: Write all outputs to `./brands/{brand-slug}/campaigns/community/`.
+5. **Save deliverables**: Write all outputs to the resolved path (see Path Resolution).
 6. **Recommend the first move**: What to build first, who to invite, and what to measure.
 
 ### When to Escalate

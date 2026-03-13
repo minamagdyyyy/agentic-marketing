@@ -48,7 +48,9 @@ When a brand workspace is the active context, read the brand's existing files be
 ./brands/{brand-slug}/brand-context.md                  — Read first when working from the brand workspace
 ./brands/{brand-slug}/product-marketing-context.md      — Read if it exists (deep positioning reference)
 ./brands/{brand-slug}/sostac/                           — Check which phase files exist
-./brands/{brand-slug}/campaigns/                        — Check active campaigns
+./brands/{brand-slug}/campaigns/                        — Check named campaigns and their strategy.md files
+./brands/{brand-slug}/channels/                         — Check standalone channel work
+./brands/{brand-slug}/operations/                       — Check standalone operational work
 ```
 
 If `product-marketing-context.md` does not exist and the brand has active campaigns or a complete SOSTAC plan, note this to the user: "I notice there's no product marketing context document yet — this helps every specialist produce more on-brand output. Want to create one? It only takes a few minutes and works from your existing SOSTAC plan."
@@ -98,21 +100,7 @@ When creating a new brand, gather the following from the user:
 
 ### Create the Brand Directory Structure
 
-```
-./brands/{brand-slug}/
-  brand-context.md          # Core brand identity and context
-  sostac/                   # SOSTAC strategic planning phases
-    README.md               # SOSTAC overview and status tracker
-  campaigns/                # Campaign plans and execution logs
-  content/                  # Content assets organized by type
-    blog/
-    social/
-    email/
-    video/
-    ads/
-  analytics/                # Performance data, reports, dashboards
-  assets/                   # Brand assets (logos, style guides, templates)
-```
+> See `./references/directory-structure.md` for the full directory layout. Create the top-level directories during onboarding.
 
 ### Write brand-context.md
 
@@ -256,150 +244,25 @@ SOSTAC phases are strictly sequential. The next phase to work on is the first on
 
 ## 6. Spawning Implementation Teams
 
-When the SOSTAC plan is complete and the user wants to implement, assemble a team of specialists.
+> Full team spawning workflow, specialist-to-skill mapping, output routing tables, campaign creation, and legacy directory detection are in `./references/team-spawning.md`. Read it when the user is ready to implement.
 
-### Step 1 — Read the Tactics Phase
-
-Read `./brands/{brand-slug}/sostac/04-tactics.md` to identify which marketing channels and tactics the plan calls for. This file is the source of truth for what specialists are needed.
-
-### Step 2 — Map Tactics to Specialists
-
-| Tactic/Channel Category | Specialist Role | Skill to Use |
-|---|---|---|
-| SEO, organic search, technical SEO, content optimization | SEO Specialist | `marketing-seo` |
-| PPC, paid search, display ads, paid social ads, retargeting | Paid Media Manager | `marketing-paid-ads` |
-| Social media management, community posting, organic social | Social Media Manager | `marketing-social` |
-| Blog posts, whitepapers, case studies, content calendar | Content Strategist | `marketing-content` |
-| Email campaigns, newsletters, drip sequences, automation | Email Marketing Specialist | `marketing-email` |
-| Guerrilla marketing, stunts, unconventional tactics, viral | Growth Hacker | `marketing-guerrilla` |
-| Video content, YouTube, TikTok production, webinars | Video Strategist | `marketing-video` |
-| Influencer partnerships, creator collaborations, UGC | Influencer Manager | `marketing-influencer` |
-| Press releases, media outreach, thought leadership | PR Specialist | `marketing-pr` |
-| Community building, forums, Discord, user groups | Community Manager | `marketing-community` |
-| Referral programs, affiliate marketing, partnerships | Referral/Affiliate Manager | `marketing-referral` |
-| Analytics, reporting, A/B testing, attribution | Analytics Analyst | `marketing-analytics` |
-| Landing page CRO, signup optimization, onboarding activation, forms, popups, paywalls | CRO Specialist | `marketing-cro` |
-| Churn reduction, cancel flows, dunning sequences, win-back campaigns, health scoring | Retention Specialist | `marketing-retention` |
-| Product launch, go-to-market, Product Hunt, launch content, announcement cadence | Launch Strategist | `marketing-launch` |
-| Pricing strategy, tier packaging, value metric, pricing page, willingness-to-pay | Pricing Strategist | `marketing-pricing` |
-| Behavioral science, cognitive biases, persuasion frameworks, copy psychology | Psychology Strategist | `marketing-psychology` |
-| Sales decks, one-pagers, objection handling, demo scripts, ROI calculators, champion kits | Sales Enablement Specialist | `marketing-sales` |
-
-### Step 3 — Confirm the Team with the User
-
-Before spawning, present the proposed team:
-
-```
-Based on your SOSTAC plan, here is the recommended team:
-
-  Team Lead: Agency Coordinator (me)
-
-  Specialists:
-  - SEO Specialist — organic search optimization, technical SEO audit
-  - Content Strategist — blog content calendar, thought leadership pieces
-  - Email Marketing Specialist — welcome sequence, nurture campaigns
-  - Social Media Manager — LinkedIn and Twitter organic strategy
-
-  Not needed for this plan:
-  - Paid Media (plan focuses on organic growth first)
-  - Video Strategist (deferred to Phase 2)
-
-Shall I assemble this team and begin implementation? You can add or remove specialists.
-```
-
-### Step 4 — Spawn the Team
-
-Use the TeamCreate tool to create the implementation team:
-
-- **Team name**: `{brand-slug}-marketing`
-- **Description**: "Marketing implementation team for {Brand Name}"
-
-Then create tasks based on the SOSTAC Action phase (`05-action.md`), which should contain the implementation timeline and task breakdown. Assign tasks to the appropriate specialists.
-
-### Step 5 — Coordinate Implementation
-
-As the team lead:
-1. Create tasks from the Action plan's timeline and milestones.
-2. Assign each task to the appropriate specialist agent.
-3. Ensure specialists have access to:
-   - `brand-context.md` (brand voice, audience, USP)
-   - The relevant SOSTAC phase files (especially Tactics and Action)
-   - The `content/` and `campaigns/` directories for output
-4. Monitor progress and report back to the user.
-5. Each specialist should write their outputs to the appropriate brand subdirectory.
-
-### Specialist Output Locations
-
-| Specialist | Primary Output Directory |
-|---|---|
-| SEO Specialist | `campaigns/seo/`, `content/blog/` |
-| Paid Media Manager | `campaigns/paid/`, `content/ads/` |
-| Social Media Manager | `campaigns/social/`, `content/social/` |
-| Content Strategist | `content/blog/`, `content/` |
-| Email Marketing Specialist | `campaigns/email/`, `content/email/` |
-| Growth Hacker | `campaigns/guerrilla/` |
-| Video Strategist | `campaigns/video/`, `content/video/` |
-| Influencer Manager | `campaigns/influencer/` |
-| PR Specialist | `campaigns/pr/` |
-| Community Manager | `campaigns/community/` |
-| Referral/Affiliate Manager | `campaigns/referral/` |
-| Analytics Analyst | `analytics/` |
-| CRO Specialist | `campaigns/cro/` |
-| Retention Specialist | `campaigns/retention/` |
-| Launch Strategist | `campaigns/launch/` |
-| Pricing Strategist | `campaigns/pricing/` |
-| Psychology Strategist | *(cross-cutting — annotates other specialists' deliverables)* |
-| Sales Enablement Specialist | `campaigns/sales/` |
+When the SOSTAC plan is complete and the user wants to implement:
+1. Read `./references/team-spawning.md` for the full specialist mapping and workflow.
+2. Read `04-tactics.md` to identify which channels and tactics the plan calls for.
+3. Map tactics to specialists using the reference table.
+4. Confirm the proposed team with the user before spawning.
+5. Create campaigns and scaffold channel directories as needed.
 
 ---
 
 ## 7. Progress Tracking
 
-When the user asks about progress, gather data from multiple sources:
+> Full progress tracking procedures and presentation templates are in `./references/progress-tracking.md`. Read it when the user asks about marketing status.
 
-### Brand-Level Overview
-
-Read and summarize:
-- `brand-context.md` — current stage
-- `sostac/README.md` — planning status
-- `campaigns/` — list all campaign directories and their status files
-- `analytics/` — latest reports if they exist
-
-### Campaign-Level Detail
-
-For each active campaign directory under `campaigns/{channel}/`:
-- Read any status or progress files
-- Check for completed deliverables
-- Report what is done, what is in progress, and what is pending
-
-### Present Progress Clearly
-
-```
-# {Brand Name} — Marketing Progress
-
-## Strategic Plan (SOSTAC)
-- Status: Complete (6/6 phases)
-- Last updated: {date}
-
-## Active Campaigns
-
-### SEO Campaign
-- Technical audit: Complete
-- Keyword research: Complete
-- Content optimization: In Progress (5/12 pages done)
-- Link building: Not Started
-
-### Email Campaign
-- Welcome sequence: Complete (5 emails)
-- Nurture sequence: In Progress (3/7 emails drafted)
-- List segmentation: Complete
-
-## Key Metrics
-{Pull from analytics/ if available}
-
-## Next Actions
-{Derived from Action plan timeline}
-```
+When the user asks about progress:
+1. Read `./references/progress-tracking.md` for the full data-gathering and presentation workflow.
+2. Gather data from brand-context.md, SOSTAC status, campaigns, channels, operations, and analytics.
+3. Present a clear status report organized by campaign and standalone work.
 
 ---
 
@@ -427,29 +290,7 @@ If the user wants a quick task (e.g., "write one social post"), do not force the
 
 ---
 
-## 9. Quick Reference: File Paths
-
-All paths are relative to the project root.
-
-```
-./brands/                                    # All brands
-./brands/{slug}/brand-context.md             # Brand identity and context
-./brands/{slug}/sostac/README.md             # SOSTAC status tracker
-./brands/{slug}/sostac/01-situation.md       # Situation Analysis
-./brands/{slug}/sostac/02-objectives.md      # Objectives
-./brands/{slug}/sostac/03-strategy.md        # Strategy
-./brands/{slug}/sostac/04-tactics.md         # Tactics
-./brands/{slug}/sostac/05-action.md          # Action Plan
-./brands/{slug}/sostac/06-control.md         # Control & Measurement
-./brands/{slug}/campaigns/{channel}/         # Campaign plans and logs
-./brands/{slug}/content/{type}/              # Content assets by type
-./brands/{slug}/analytics/                   # Reports and metrics
-./brands/{slug}/assets/                      # Brand assets and templates
-```
-
----
-
-## 10. Example Conversation Flows
+## 9. Example Conversation Flows
 
 ### Flow A: Brand New User
 ```
@@ -475,7 +316,7 @@ User: "Acme Corp plan is done, let's execute"
 → Load brand → Read SOSTAC → Confirm 6/6
 → Read 04-tactics.md → Map to specialists
 → "Your plan calls for SEO, Content, and Email. Here's the proposed team..."
-→ User confirms → Spawn team → Create tasks → Begin implementation
+→ User confirms → Create campaign → Spawn team → Begin implementation
 ```
 
 ### Flow D: Quick Task, No Plan
@@ -485,17 +326,9 @@ User: "Write a LinkedIn post for Acme Corp about our new feature"
 → SOSTAC: 0/6 (no plan yet)
 → "I can write that post now using your brand context. Note: a SOSTAC plan would help
    ensure all your content aligns with a cohesive strategy. Want to set that up after?"
-→ Write the post → Save to content/social/
+→ Ask: "Is this part of a specific campaign, or standalone work?"
+→ Route to appropriate specialist and directory
 ```
-
-### Flow E: Multiple Brands
-```
-User: "Let's work on marketing"
-→ Check ./brands/ → find 3 brands
-→ Present numbered list with status summaries
-→ User picks one → Load it → Route based on SOSTAC status
-```
-
 
 ---
 

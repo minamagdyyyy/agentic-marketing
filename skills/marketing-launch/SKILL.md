@@ -24,6 +24,24 @@ You are a senior product launch strategist with deep expertise across go-to-mark
 
 ---
 
+## Path Resolution: Campaign vs Standalone
+
+**Campaign mode** — working within a named campaign:
+  → Save to `./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/launch/`
+  → Read campaign strategy at `./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/strategy.md`
+  → Channel-specific content (email, social, etc.) saves to `./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/channels/{channel}/content/`
+
+**Standalone mode** — evergreen or independent work:
+  → Save to `./brands/{brand-slug}/operations/launch/`
+
+**Legacy fallback** — old directory structure detected:
+  → Save to `./brands/{brand-slug}/campaigns/launch/`
+  → Suggest migration to new structure
+
+If unsure which mode, ask: "Is this part of a specific campaign, or standalone work?"
+
+---
+
 ## Research Mode: Launch Intelligence
 
 Use agent-browser to research the competitive landscape, Product Hunt dynamics, and community conversation before finalizing launch strategy. Check `./brands/{brand-slug}/sostac/00-auto-discovery.md` for research already collected.
@@ -313,7 +331,7 @@ Great companies do not launch once. They maintain a drumbeat of launches, update
 
 Maintain these so each launch activates faster:
 
-- **Press kit**: updated product screenshots, founder headshots, company boilerplate, recent coverage logos. Store at `./brands/{brand-slug}/campaigns/launch/assets/press-kit/`.
+- **Press kit**: updated product screenshots, founder headshots, company boilerplate, recent coverage logos. Store at the resolved path under `assets/press-kit/`.
 - **Launch email templates**: maintain 3-5 subject line formulas and body templates that can be adapted per launch.
 - **Social proof library**: rotating bank of testimonials, case study quotes, and metrics. Update monthly.
 - **Supporter list**: maintain a rolling list of launch supporters (Product Hunt voters, beta users who responded) for future launches.
@@ -368,40 +386,44 @@ Bridge to marketing-analytics for full UTM governance and attribution reporting.
 
 ## 10. Deliverables
 
-All launch deliverables save to `./brands/{brand-slug}/campaigns/launch/`.
+All launch deliverables save to the resolved path (see Path Resolution above).
 
 | Deliverable | Filename | Contents |
 |---|---|---|
 | Launch Strategy | `launch-strategy-{YYYY-MM-DD}.md` | Launch type, ORB plan, phase timeline, channel owners, success metrics, budget |
 | Launch Brief | `launch-brief-{YYYY-MM-DD}.md` | One-page summary: what, who, when, key messages, channel plan, launch day schedule |
 | Launch Blog Post | `content/launch-post-{YYYY-MM-DD}.md` | Full blog post draft, SEO title, meta description, tags |
-| Email Announcement | `content/email-announcement-{YYYY-MM-DD}.md` | Subject line variants, preheader, full body copy, CTA |
-| Social Posts | `content/social-posts-{YYYY-MM-DD}.md` | Per-platform drafts: X thread, LinkedIn post, Instagram captions, Reddit/community posts |
-| Press Release | `content/press-release-{YYYY-MM-DD}.md` | Full press release, distribution plan |
+| Email Announcement | `channels/email/content/email-announcement-{YYYY-MM-DD}.md` | Subject line variants, preheader, full body copy, CTA |
+| Social Posts | `channels/social/content/social-posts-{YYYY-MM-DD}.md` | Per-platform drafts: X thread, LinkedIn post, Instagram captions, Reddit/community posts |
+| Press Release | `channels/pr/content/press-release-{YYYY-MM-DD}.md` | Full press release, distribution plan |
 | Product Hunt Brief | `content/product-hunt-brief-{YYYY-MM-DD}.md` | Tagline variants, description, first comment draft, gallery spec, supporter outreach template |
-| Supporter Outreach | `content/supporter-email-{YYYY-MM-DD}.md` | Pre-launch supporter briefing email + launch day ask email |
+| Supporter Outreach | `channels/email/content/supporter-email-{YYYY-MM-DD}.md` | Pre-launch supporter briefing email + launch day ask email |
 | Launch Day Schedule | `launch-day-schedule-{YYYY-MM-DD}.md` | Minute-by-minute timeline with owners and channel links |
 | Launch Performance Report | `performance/launch-report-{YYYY-MM}.md` | Results vs targets, learnings, recommendations for next launch |
 
 **File organization**:
 ```
-./brands/{brand-slug}/campaigns/launch/
+# Campaign mode (launch is typically a campaign type, e.g. launch-spring-release):
+./brands/{brand-slug}/campaigns/launch-{campaign-slug}/launch/
   launch-strategy-{YYYY-MM-DD}.md
   launch-brief-{YYYY-MM-DD}.md
   launch-day-schedule-{YYYY-MM-DD}.md
-  content/
-    launch-post-{YYYY-MM-DD}.md
-    email-announcement-{YYYY-MM-DD}.md
-    social-posts-{YYYY-MM-DD}.md
-    press-release-{YYYY-MM-DD}.md
-    product-hunt-brief-{YYYY-MM-DD}.md
-    supporter-email-{YYYY-MM-DD}.md
   assets/
     press-kit/
       screenshots/
       logos/
   performance/
     launch-report-{YYYY-MM}.md
+# Channel-specific content lives in the campaign's channel dirs:
+./brands/{brand-slug}/campaigns/launch-{campaign-slug}/channels/
+  email/content/email-announcement-{YYYY-MM-DD}.md
+  social/content/social-posts-{YYYY-MM-DD}.md
+  content/content/launch-post-{YYYY-MM-DD}.md
+  pr/content/press-release-{YYYY-MM-DD}.md
+
+# Standalone mode:
+./brands/{brand-slug}/operations/launch/
+  (same structure, content/ subdir for non-campaign work)
 ```
 
 ---
@@ -425,9 +447,9 @@ When the user requests launch work:
 2. **Read strategic context from the best available source**: brand context and SOSTAC first when available; otherwise use the codebase, live site, prior launch deliverables, and user inputs.
 3. **Run Research Mode** for Tier 1 launches or when competitive launch intelligence is needed before finalizing strategy.
 4. **Clarify launch type** (Section 1): Is this Tier 1, 2, or 3? New product or feature? What is the target date?
-5. **Assess current state**: Check `./brands/{brand-slug}/campaigns/launch/` for prior deliverables. If in codebase mode, deeply inspect the relevant implementation files, existing patterns, dependencies, and validation path before proposing or making changes.
+5. **Assess current state**: Check the resolved path (see Path Resolution) for prior deliverables. If in codebase mode, deeply inspect the relevant implementation files, existing patterns, dependencies, and validation path before proposing or making changes.
 6. **Deliver specific, actionable output**: Complete launch plans, full content drafts, audits, implementation plans, or code-ready recommendations -- never vague frameworks without specifics.
-7. **Save deliverables**: Write all outputs to `./brands/{brand-slug}/campaigns/launch/` with appropriate filenames when working in the brand workspace.
+7. **Save deliverables**: Write all outputs to the resolved path (see Path Resolution) with appropriate filenames when working in the brand workspace.
 8. **Recommend next steps**: What to do first, who owns it, and when the next gate decision is.
 
 ### Scope by Request Type

@@ -24,6 +24,23 @@ You are a senior influencer and creator partnerships strategist with deep expert
 
 ---
 
+## Path Resolution: Campaign vs Standalone
+
+**Campaign mode** — working within a named campaign:
+  → Save to `./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/channels/influencer/content/`
+  → Read campaign strategy at `./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/strategy.md`
+
+**Standalone mode** — evergreen or independent work:
+  → Save to `./brands/{brand-slug}/channels/influencer/content/`
+
+**Legacy fallback** — old directory structure detected:
+  → Save to `./brands/{brand-slug}/campaigns/influencer/`
+  → Suggest migration to new structure
+
+If unsure which mode, ask: "Is this part of a specific campaign, or standalone work?"
+
+---
+
 ## Research Mode: Influencer Discovery
 
 Use agent-browser to find and vet creators before building shortlists. Check `./brands/{brand-slug}/sostac/00-auto-discovery.md` for influencer data already collected.
@@ -39,7 +56,7 @@ agent-browser get text body
 
 # Instagram Hashtag Research (find active creators)
 agent-browser --session influencer-research open "https://www.instagram.com/explore/tags/{niche-hashtag}/" && agent-browser wait --load networkidle && agent-browser wait 2000
-agent-browser screenshot ./brands/{brand-slug}/campaigns/influencer/hashtag-research.png
+agent-browser screenshot ./brands/{brand-slug}/channels/influencer/content/hashtag-research.png
 
 # YouTube Creator Search
 agent-browser --session influencer-research open "https://www.youtube.com/results?search_query={niche-keyword}+review" && agent-browser wait --load networkidle && agent-browser wait 2000
@@ -383,7 +400,7 @@ Influencer marketing is hard to attribute -- expect 20-40% of impact to be unmea
 
 ## 11. Outputs and Deliverables
 
-All deliverables save to `./brands/{brand-slug}/campaigns/influencer/`.
+All deliverables save to the resolved path (see Path Resolution above).
 
 ### 11.1 Campaign Plan (`campaign-plan-{name}-{YYYY-MM-DD}.md`)
 
@@ -414,7 +431,15 @@ Sections: Campaign Summary, Performance Overview table (Metric, Target, Actual, 
 ## 12. File Organization
 
 ```
-./brands/{brand-slug}/campaigns/influencer/
+## Campaign mode:
+./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/channels/influencer/content/
+  campaign-plan-{name}-{YYYY-MM-DD}.md
+  outreach-templates-{YYYY-MM-DD}.md
+  creator-brief-{campaign}-{YYYY-MM-DD}.md
+  contract-outline-{YYYY-MM-DD}.md
+
+## Standalone mode (default for evergreen work):
+./brands/{brand-slug}/channels/influencer/content/
   campaign-plan-{name}-{YYYY-MM-DD}.md
   outreach-templates-{YYYY-MM-DD}.md
   creator-brief-{campaign}-{YYYY-MM-DD}.md
@@ -436,9 +461,9 @@ When the user requests influencer marketing work:
 
 1. **Read brand context and SOSTAC** (Section 0) when available, then continue from the best available context.
 2. **Clarify scope**: Strategy, identification, outreach, campaign planning, UGC program, affiliate setup, ambassador program, or performance analysis?
-3. **Assess current state**: Check `./brands/{brand-slug}/campaigns/influencer/` for prior deliverables.
+3. **Assess current state**: Check the resolved path (see Path Resolution) for prior deliverables.
 4. **Deliver actionable output**: Specific strategies, shortlists, briefs, templates, and plans -- never vague advice.
-5. **Save deliverables**: Write all outputs to `./brands/{brand-slug}/campaigns/influencer/`.
+5. **Save deliverables**: Write all outputs to the resolved path (see Path Resolution).
 6. **Recommend next steps**: Which creators to approach first, what to test, when to review.
 
 ### When to Escalate

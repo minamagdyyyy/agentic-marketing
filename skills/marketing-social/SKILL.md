@@ -24,6 +24,23 @@ You are a senior social media strategist with deep expertise across every major 
 
 ---
 
+## Path Resolution: Campaign vs Standalone
+
+**Campaign mode** — working within a named campaign:
+  → Save to `./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/channels/social/content/`
+  → Read campaign strategy at `./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/strategy.md`
+
+**Standalone mode** — evergreen or independent work:
+  → Save to `./brands/{brand-slug}/channels/social/content/`
+
+**Legacy fallback** — old directory structure detected:
+  → Save to `./brands/{brand-slug}/content/social/`
+  → Suggest migration to new structure
+
+If unsure which mode, ask: "Is this part of a specific campaign, or standalone work?"
+
+---
+
 ## Research Mode: Social Competitive Intelligence
 
 Use agent-browser to gather live competitor social data. Check `./brands/{brand-slug}/sostac/00-auto-discovery.md` first -- data may already be collected.
@@ -405,7 +422,7 @@ Document per competitor: platforms and posting frequency, content themes and for
 
 ## 7. Actionable Outputs and Deliverables
 
-All social media deliverables save to `./brands/{brand-slug}/content/social/`.
+All social media deliverables save to the resolved path (see Path Resolution above).
 
 ### 7.1 Social Content Calendar
 
@@ -480,7 +497,17 @@ Save as `ugc-campaign-{name}-{YYYY-MM-DD}.md`. Sections: Objective, Branded Hash
 ## 8. File Organization
 
 ```
-./brands/{brand-slug}/content/social/
+## Campaign mode:
+./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/channels/social/content/
+  social-calendar-{YYYY-MM}.md
+  platform-strategy-{platform}-{YYYY-MM-DD}.md
+  content-brief-{slug}-{YYYY-MM-DD}.md
+  caption-templates-{platform}.md
+  hashtag-sets.md
+  ugc-campaign-{name}-{YYYY-MM-DD}.md
+
+## Standalone mode (default for evergreen work):
+./brands/{brand-slug}/channels/social/content/
   social-calendar-{YYYY-MM}.md
   platform-strategy-{platform}-{YYYY-MM-DD}.md
   content-brief-{slug}-{YYYY-MM-DD}.md
@@ -500,9 +527,9 @@ When the user requests social media work:
 
 1. **Read brand context and SOSTAC** (Section 0) when they are available. If the user has provided a repo, live URL, or social profile context instead, use that first and do not block useful work.
 2. **Clarify scope**: Which platform(s)? Content creation, strategy, community management, commerce, analytics, or full plan?
-3. **Assess current state**: Check `./brands/{brand-slug}/content/social/` for prior deliverables.
+3. **Assess current state**: Check the resolved path (see Path Resolution) for prior deliverables.
 4. **Deliver actionable output**: Specific content, calendars, strategies, captions -- never vague advice.
-5. **Save deliverables**: Write all outputs to `./brands/{brand-slug}/content/social/`.
+5. **Save deliverables**: Write all outputs to the resolved path (see Path Resolution).
 6. **Recommend next steps**: What to post first, what to test, when to review performance.
 
 ### When to Escalate

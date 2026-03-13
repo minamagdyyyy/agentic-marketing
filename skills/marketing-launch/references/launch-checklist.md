@@ -285,7 +285,7 @@ Check these sources throughout the day:
 - [ ] Update the product roadmap based on launch feedback themes.
 - [ ] Publish a "month in review" post for social media and newsletter: key milestone, user win, next feature coming.
 - [ ] Send "one month in" email to launch cohort: product updates since launch, community highlights, and a re-engagement hook for dormant users.
-- [ ] Compile full launch performance report and save to `./brands/{brand-slug}/campaigns/launch/performance/launch-report-{YYYY-MM}.md`.
+- [ ] Compile full launch performance report and save to `./brands/{brand-slug}/campaigns/launch-{campaign-slug}/performance/launch-report-{YYYY-MM}.md`.
 - [ ] Share learnings with full team. Update the SOSTAC action plan based on launch insights.
 - [ ] Plan the next Tier 2 or Tier 3 launch moment to maintain announcement cadence.
 
@@ -405,7 +405,7 @@ What to create for each channel for a full Tier 1 launch.
 - [ ] Press release: full draft, approved, formatted for distribution
 - [ ] Embargo pitch emails: sent 4-8 weeks before to tier-1-2 journalists
 - [ ] Follow-up pitch emails: sent 3-5 days before launch lift
-- [ ] Media list with outreach status tracked (save to `./brands/{brand-slug}/campaigns/pr/media-lists/`)
+- [ ] Media list with outreach status tracked (save to `./brands/{brand-slug}/campaigns/launch-{campaign-slug}/channels/pr/content/media-lists/`)
 - [ ] Press kit: product screenshots (high res), founder headshot, company logo (PNG + SVG), boilerplate
 - [ ] Embargo lift time confirmed with all journalists who received early access
 

@@ -1,6 +1,6 @@
 ---
 name: product-marketing-context
-description: "Builds the product positioning document — customer language, differentiation, personas, and proof points. Triggers for 'positioning', 'target audience', 'differentiation', 'proof points', 'customer language', or 'product marketing context'."
+description: "Builds the product positioning document — customer language, differentiation, personas, and proof points. Triggers for 'positioning', 'target audience', 'differentiation', 'proof points', 'customer language', 'product marketing context', 'ICP', 'ideal customer profile', 'buyer persona', 'messaging framework', 'competitive positioning', 'value proposition', or 'brand messaging'."
 ---
 
 # Product Marketing Context Builder

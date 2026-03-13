@@ -24,6 +24,27 @@ You are a senior content marketing strategist with deep expertise across blog po
 
 ---
 
+## Path Resolution: Campaign vs Standalone
+
+This skill produces two types of output: **blog content** (articles, drafts, case studies) and **meta content** (strategy docs, calendars, briefs).
+
+**Campaign mode** — working within a named campaign:
+  → Blog content: `./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/channels/blog/content/`
+  → Meta content: `./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/channels/content/content/`
+  → Read campaign strategy at `./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/strategy.md`
+
+**Standalone mode** — evergreen or independent work:
+  → Blog content: `./brands/{brand-slug}/channels/blog/content/`
+  → Meta content: `./brands/{brand-slug}/channels/content/content/`
+
+**Legacy fallback** — old directory structure detected:
+  → Save to `./brands/{brand-slug}/content/`
+  → Suggest migration to new structure
+
+If unsure which mode, ask: "Is this part of a specific campaign, or standalone work?"
+
+---
+
 ## Research Mode: Content Intelligence
 
 Use agent-browser to research content gaps and audience questions. Check `./brands/{brand-slug}/sostac/00-auto-discovery.md` first -- data may already be collected.
@@ -263,7 +284,7 @@ Trust: No spam promise, privacy link
 
 Conversion copywriting covers landing pages, pricing pages, and product pages -- every word serves conversion rather than education. For the complete conversion copywriting framework including page structure, CTA formulas, and headline frameworks, see `./references/frameworks.md`.
 
-When producing landing or pricing page copy, save to `./brands/{brand-slug}/content/copy/landing-page-{page-name}-{YYYY-MM-DD}.md`.
+When producing landing or pricing page copy, save to `copy/landing-page-{page-name}-{YYYY-MM-DD}.md` within the resolved blog content path.
 
 ---
 
@@ -463,7 +484,7 @@ For high-volume brands: establish editorial guidelines and templates, build a co
 
 ## 14. Actionable Outputs and Deliverables
 
-All content marketing deliverables save to `./brands/{brand-slug}/content/`.
+All content marketing deliverables save to the resolved path (see Path Resolution above). Blog content (drafts, case studies, whitepapers) saves to the blog content path; meta content (strategy, calendars, briefs) saves to the meta content path.
 
 **14.1 Content Strategy** (`content-strategy-{YYYY-MM-DD}.md`): Strategic Alignment (SOSTAC), Content Pillars, Voice and Tone Guide, Content-to-Funnel Map, Channel Strategy, Cadence, KPIs, Competitive Landscape.
 
@@ -484,10 +505,24 @@ All content marketing deliverables save to `./brands/{brand-slug}/content/`.
 ## 15. File Organization
 
 ```
-./brands/{brand-slug}/content/
+## Campaign mode:
+./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/channels/content/content/
   content-strategy-{YYYY-MM-DD}.md
   content-calendar-{YYYY-MM}.md
   briefs/brief-{slug}-{YYYY-MM-DD}.md
+./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/channels/blog/content/
+  blog/draft-{slug}-{YYYY-MM-DD}.md
+  case-studies/case-study-{customer-slug}-{YYYY-MM-DD}.md
+  lead-magnets/lead-magnet-{name}-{YYYY-MM-DD}.md
+  copy/landing-page-{page-name}-{YYYY-MM-DD}.md
+  whitepapers/whitepaper-{slug}-{YYYY-MM-DD}.md
+
+## Standalone mode (default for evergreen work):
+./brands/{brand-slug}/channels/content/content/
+  content-strategy-{YYYY-MM-DD}.md
+  content-calendar-{YYYY-MM}.md
+  briefs/brief-{slug}-{YYYY-MM-DD}.md
+./brands/{brand-slug}/channels/blog/content/
   blog/draft-{slug}-{YYYY-MM-DD}.md
   case-studies/case-study-{customer-slug}-{YYYY-MM-DD}.md
   lead-magnets/lead-magnet-{name}-{YYYY-MM-DD}.md
@@ -507,9 +542,9 @@ When the user requests content marketing work:
 
 1. **Read brand context and SOSTAC** (Section 0) when available; otherwise proceed from the repo, CMS, live URL, existing assets, or user-provided context as appropriate.
 2. **Clarify scope**: Content strategy, calendar, blog writing, case study, lead magnet, thought leadership, or full program?
-3. **Assess current state**: Check `./brands/{brand-slug}/content/` for prior deliverables.
+3. **Assess current state**: Check the resolved path (see Path Resolution) for prior deliverables.
 4. **Deliver actionable output**: Specific strategies, calendars, briefs, drafts, templates -- never vague advice.
-5. **Save deliverables**: Write all outputs to `./brands/{brand-slug}/content/`.
+5. **Save deliverables**: Write all outputs to the resolved path (see Path Resolution).
 6. **Recommend next steps**: What to create first, what to test, when to review.
 
 ### When to Escalate

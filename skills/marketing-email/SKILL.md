@@ -1,6 +1,6 @@
 ---
 name: marketing-email
-description: "Builds email sequences, newsletters, automation workflows, and manages deliverability. Triggers for 'email sequence', 'newsletter', 'drip campaign', 'welcome email', 'deliverability', 'lifecycle email', or 'ESP'."
+description: "Builds email sequences, newsletters, automation workflows, and manages deliverability. Triggers for 'email sequence', 'newsletter', 'drip campaign', 'welcome email', 'deliverability', 'lifecycle email', 'ESP', 'automated email', 'email campaign', 'cold email', 'transactional email', 'email automation', or 'email copywriting' — not retention-specific cancel/dunning flows (use retention)."
 ---
 
 # Email Marketing Specialist
@@ -16,6 +16,23 @@ You are a senior email marketing strategist with deep expertise across lifecycle
 ## 0. Pre-Flight: Read Strategic Context
 
 > See `./references/shared-patterns.md § Pre-Flight` for the standard context-reading sequence. Ground every recommendation in brand positioning first, otherwise the existing codebase or live page.
+
+---
+
+## Path Resolution: Campaign vs Standalone
+
+**Campaign mode** — working within a named campaign:
+  → Save to `./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/channels/email/content/`
+  → Read campaign strategy at `./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/strategy.md`
+
+**Standalone mode** — evergreen or independent work:
+  → Save to `./brands/{brand-slug}/channels/email/content/`
+
+**Legacy fallback** — old directory structure detected:
+  → Save to `./brands/{brand-slug}/content/email/`
+  → Suggest migration to new structure
+
+If unsure which mode, ask: "Is this part of a specific campaign, or standalone work?"
 
 ---
 
@@ -408,7 +425,7 @@ When writing cold email sequences, produce:
 3. Personalization variables to fill per prospect or segment
 4. CTA instructions (what happens when they respond — what is the next step in the sales process)
 
-Save to `./brands/{brand-slug}/content/email/cold-outbound-{campaign-name}-{YYYY-MM-DD}.md`.
+Save to `./brands/{brand-slug}/channels/email/content/cold-outbound-{campaign-name}-{YYYY-MM-DD}.md` (or the resolved campaign path).
 
 ---
 
@@ -497,7 +514,7 @@ Before sending any email, ask: **If the subscriber understood every technique us
 
 ## 13. Actionable Outputs and Deliverables
 
-All email marketing deliverables save to `./brands/{brand-slug}/content/email/`.
+All email marketing deliverables save to the resolved path (see Path Resolution above).
 
 | Deliverable | Filename | Key Sections |
 |---|---|---|
@@ -511,7 +528,7 @@ All email marketing deliverables save to `./brands/{brand-slug}/content/email/`.
 
 ## 14. File Organization
 
-All deliverables save to `./brands/{brand-slug}/content/email/` using the filenames in Section 13. Monthly performance reports save to `./brands/{brand-slug}/content/email/performance/monthly-report-{YYYY-MM}.md`.
+All deliverables save to the resolved path (see Path Resolution above) using the filenames in Section 13. Monthly performance reports save to `performance/monthly-report-{YYYY-MM}.md` within the resolved path.
 
 ---
 
@@ -521,9 +538,9 @@ When the user requests email marketing work:
 
 1. **Read brand context and SOSTAC** (Section 0) when available; otherwise proceed from the repo, app flow, live site, analytics, or user-provided context as appropriate.
 2. **Clarify scope**: Sequence creation, newsletter planning, automation setup, copywriting, deliverability audit, ESP selection, list strategy, or full email program?
-3. **Assess current state**: Check `./brands/{brand-slug}/content/email/` for prior deliverables.
+3. **Assess current state**: Check the resolved path (see Path Resolution) for prior deliverables.
 4. **Deliver actionable output**: Specific sequences, copy, workflows, and plans -- never vague advice.
-5. **Save deliverables**: Write all outputs to `./brands/{brand-slug}/content/email/`.
+5. **Save deliverables**: Write all outputs to the resolved path (see Path Resolution).
 6. **Recommend next steps**: What to build first, what to test, when to review performance.
 
 ### When to Escalate

@@ -26,6 +26,23 @@ You are a senior SEO specialist with deep expertise across technical SEO, conten
 
 ---
 
+## Path Resolution: Campaign vs Standalone
+
+**Campaign mode** — working within a named campaign:
+  → Save to `./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/channels/seo/content/`
+  → Read campaign strategy at `./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/strategy.md`
+
+**Standalone mode** — evergreen or independent work:
+  → Save to `./brands/{brand-slug}/channels/seo/content/`
+
+**Legacy fallback** — old directory structure detected:
+  → Save to `./brands/{brand-slug}/content/seo/`
+  → Suggest migration to new structure
+
+If unsure which mode, ask: "Is this part of a specific campaign, or standalone work?"
+
+---
+
 ## Research Mode: Live Competitive Intelligence
 
 Use `agent-browser` to gather live SEO data when current SERP positions, competitor rankings, or technical metrics are needed. Start a named session to share context across commands.
@@ -184,7 +201,7 @@ Match content format to intent. Targeting a transactional keyword with a blog po
 
 For every piece of SEO content, produce a brief containing: target keyword, supporting keywords (5-15), search intent, target word count (from SERP analysis), target URL, SERP analysis (top 5 results, content gaps, featured snippet opportunity, PAA questions), recommended H1/H2/H3 structure, must-include elements (data points, internal links, external links, media), E-E-A-T signals (author bio, first-person experience, citations, updated date), and on-page optimization (title tag 60 chars, meta description 155 chars, URL slug, image alt text).
 
-Save briefs to `./brands/{brand-slug}/content/seo/content-briefs/brief-{slug}.md`.
+Save briefs to `content-briefs/brief-{slug}.md` within the resolved path (see Path Resolution).
 
 ### 2.4 Content Gap Analysis
 
@@ -339,7 +356,7 @@ Research on what makes content more likely to be cited in AI Overviews and LLM r
 
 ## 6. Actionable Outputs and Deliverables
 
-All SEO deliverables save to `./brands/{brand-slug}/content/seo/`.
+All SEO deliverables save to the resolved path (see Path Resolution above).
 
 ### 6.1 SEO Audit
 
@@ -429,14 +446,25 @@ For the full operating framework -- qualification, page archetypes, data contrac
 ### Agency Connection
 
 - **Input**: Brand context and SOSTAC plan from the agency coordinator.
-- **Output**: All deliverables to `./brands/{brand-slug}/content/seo/`.
+- **Output**: All deliverables to the resolved path (see Path Resolution).
 - **Collaboration**: Content Strategist (briefs feed content creation), Paid Media (keyword data informs PPC), Analytics (tracking and reporting), PR (digital PR and link building overlap).
 - **Reporting**: Monthly performance summaries to `./brands/{brand-slug}/analytics/seo/`.
 
 ### File Organization
 
 ```
-./brands/{brand-slug}/content/seo/
+## Campaign mode:
+./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/channels/seo/content/
+  seo-audit-{YYYY-MM-DD}.md
+  keyword-research-{topic}-{YYYY-MM-DD}.md
+  seo-action-plan-{YYYY-MM}.md
+  content-briefs/
+    brief-{slug}.md
+  schema/
+    {type}-{YYYY-MM-DD}.json
+
+## Standalone mode (default for evergreen work):
+./brands/{brand-slug}/channels/seo/content/
   seo-audit-{YYYY-MM-DD}.md
   keyword-research-{topic}-{YYYY-MM-DD}.md
   seo-action-plan-{YYYY-MM}.md
@@ -473,9 +501,9 @@ When the user requests SEO work:
 1. **Route the starting context** (Starting Context Router). Decide whether this is strategy, codebase implementation, or live URL audit work.
 2. **Read the strongest available context** (Section 0): brand and SOSTAC first when available; otherwise use the existing codebase or live site.
 3. **Clarify scope**: Which discipline? Technical audit, keyword research, content optimization, programmatic SEO, link building, local SEO, AI search, or full strategy?
-4. **Assess current state**: Check `./brands/{brand-slug}/content/seo/` for prior deliverables, and if working in a codebase inspect the existing implementation before proposing changes.
+4. **Assess current state**: Check the resolved path (see Path Resolution) for prior deliverables, and if working in a codebase inspect the existing implementation before proposing changes.
 5. **Deliver actionable output**: Specific, implementable recommendations -- never vague advice.
-6. **Save deliverables**: Write all outputs to the appropriate location under `./brands/{brand-slug}/content/seo/`.
+6. **Save deliverables**: Write all outputs to the appropriate location under the resolved path (see Path Resolution).
 7. **Recommend next steps**: Suggest what to work on next based on priority and SOSTAC timeline.
 
 

@@ -1,6 +1,6 @@
 ---
 name: marketing-retention
-description: "Prevents churn through cancel flows, dunning sequences, win-back campaigns, and health scoring. Triggers for 'churn', 'cancel flow', 'dunning', 'win-back', 'failed payment', 'retention rate', or 'save offer'."
+description: "Prevents churn through cancel flows, dunning sequences, win-back campaigns, and health scoring. Triggers for 'churn', 'cancel flow', 'dunning', 'win-back', 'failed payment', 'retention rate', or 'save offer' — not general email sequences or newsletters (use email) even if they mention re-engagement. This skill owns the post-cancellation and at-risk-customer lifecycle."
 requires:
   - skill: https://github.com/vercel-labs/agent-browser
     name: agent-browser
@@ -21,6 +21,23 @@ You are a senior retention strategist with deep expertise across cancel flow des
 ## 0. Pre-Flight: Read Strategic Context
 
 > See `./references/shared-patterns.md § Pre-Flight` for the standard context-reading sequence. Ground every recommendation in brand positioning first, otherwise the existing codebase or live page.
+
+---
+
+## Path Resolution: Campaign vs Standalone
+
+**Campaign mode** — working within a named campaign:
+  → Save to `./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/retention/`
+  → Read campaign strategy at `./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/strategy.md`
+
+**Standalone mode** — evergreen or independent work:
+  → Save to `./brands/{brand-slug}/operations/retention/`
+
+**Legacy fallback** — old directory structure detected:
+  → Save to `./brands/{brand-slug}/campaigns/retention/`
+  → Suggest migration to new structure
+
+If unsure which mode, ask: "Is this part of a specific campaign, or standalone work?"
 
 ---
 
@@ -452,7 +469,7 @@ Lagging indicators (churn rate, MRR lost, win-back rate) tell you what happened 
 
 ## 7. Deliverables
 
-All retention deliverables save to `./brands/{brand-slug}/campaigns/retention/` with an `assets/` subdirectory for screenshots and CSV exports.
+All retention deliverables save to the resolved path (see Path Resolution above) with an `assets/` subdirectory for screenshots and CSV exports.
 
 | Deliverable | Filename | Key Sections |
 |---|---|---|
@@ -472,10 +489,10 @@ When the user requests retention work:
 1. **Route the starting context first** (see Starting Context Router): blank-page strategy, existing codebase implementation, or live URL audit.
 2. **Read strategic context from the best available source**: brand context and SOSTAC first when available; otherwise use the codebase, live site, prior retention deliverables, analytics context, and user inputs.
 3. **Clarify scope**: Churn diagnosis, cancel flow design, health scoring setup, dunning sequence, win-back campaign, implementation work, full retention programme, or specific metric investigation?
-4. **Assess current state**: Check `./brands/{brand-slug}/campaigns/retention/` for prior deliverables. Check if cancel flow exists, what dunning is in place (ask about billing platform), and what health scoring is currently active. If in codebase mode, deeply inspect the relevant implementation files, integrations, existing patterns, dependencies, and validation path before proposing or making changes.
+4. **Assess current state**: Check the resolved path (see Path Resolution) for prior deliverables. Check if cancel flow exists, what dunning is in place (ask about billing platform), and what health scoring is currently active. If in codebase mode, deeply inspect the relevant implementation files, integrations, existing patterns, dependencies, and validation path before proposing or making changes.
 5. **Diagnose before prescribing**: Do not jump straight to cancel flow copy without first understanding the churn rate, dominant churn type, and existing interventions. Run Section 1 analysis first if data is available.
 6. **Deliver actionable output**: Specific email sequences, decision trees, health score models, offer logic, audits, implementation plans, or code-ready recommendations -- never vague advice.
-7. **Save deliverables**: Write all outputs to `./brands/{brand-slug}/campaigns/retention/` when working in the brand workspace.
+7. **Save deliverables**: Write all outputs to the resolved path (see Path Resolution) when working in the brand workspace.
 8. **Recommend next steps**: Prioritise by expected MRR recovery impact (involuntary churn fixes first, then cancel flow, then proactive retention, then win-back).
 
 ### Recommended Priority Order

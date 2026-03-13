@@ -24,6 +24,23 @@ You are a senior pricing strategist with deep expertise across SaaS, e-commerce,
 
 ---
 
+## Path Resolution: Campaign vs Standalone
+
+**Campaign mode** — working within a named campaign:
+  → Save to `./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/pricing/`
+  → Read campaign strategy at `./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/strategy.md`
+
+**Standalone mode** — evergreen or independent work:
+  → Save to `./brands/{brand-slug}/operations/pricing/`
+
+**Legacy fallback** — old directory structure detected:
+  → Save to `./brands/{brand-slug}/campaigns/pricing/`
+  → Suggest migration to new structure
+
+If unsure which mode, ask: "Is this part of a specific campaign, or standalone work?"
+
+---
+
 ## Research Mode: Live Competitive Pricing Intelligence
 
 Use `agent-browser` to gather live competitor pricing data before building recommendations. Start a named session to share context across commands.
@@ -35,7 +52,7 @@ Use `agent-browser` to gather live competitor pricing data before building recom
 ```bash
 # Capture competitor pricing page -- tier names, price points, feature gates
 agent-browser --session pricing-research open "https://{competitor-domain}/pricing" && agent-browser wait --load networkidle && agent-browser wait 2000
-agent-browser screenshot ./brands/{brand-slug}/campaigns/pricing/competitor-{n}-pricing-page.png
+agent-browser screenshot ./brands/{brand-slug}/operations/pricing/competitor-{n}-pricing-page.png
 agent-browser get text body
 # Extract: tier names, monthly and annual price points, annual discount %, value metric,
 #          what is gated in each tier, CTA copy, free trial vs freemium, featured/recommended tier,
@@ -70,7 +87,7 @@ agent-browser get text body
 # Extract: when they changed prices, direction of changes (up/down), tier restructuring history
 ```
 
-Close the research session when done: `agent-browser --session pricing-research close`. Save screenshots and notes to `./brands/{brand-slug}/campaigns/pricing/research/`.
+Close the research session when done: `agent-browser --session pricing-research close`. Save screenshots and notes to the resolved path (see Path Resolution) under `research/`.
 
 ---
 
@@ -496,7 +513,7 @@ Before implementing any pricing technique, ask: **If the customer understood exa
 
 ## 13. Deliverables
 
-All pricing deliverables save to `./brands/{brand-slug}/campaigns/pricing/`.
+All pricing deliverables save to the resolved path (see Path Resolution above).
 
 | Deliverable | Filename | Key Sections |
 |---|---|---|
@@ -509,7 +526,8 @@ All pricing deliverables save to `./brands/{brand-slug}/campaigns/pricing/`.
 ### File Organization
 
 ```
-./brands/{brand-slug}/campaigns/pricing/
+# Campaign mode:
+./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/pricing/
   pricing-strategy-{YYYY-MM-DD}.md
   pricing-page-copy-{YYYY-MM-DD}.md
   pricing-competitive-analysis-{YYYY-MM-DD}.md
@@ -520,6 +538,10 @@ All pricing deliverables save to `./brands/{brand-slug}/campaigns/pricing/`.
     competitor-{name}-pricing-notes.md
     van-westendorp-survey-results-{YYYY-MM-DD}.md
     interview-notes-{participant}-{YYYY-MM-DD}.md
+
+# Standalone mode:
+./brands/{brand-slug}/operations/pricing/
+  (same structure as above)
 ```
 
 ---
@@ -534,7 +556,7 @@ When the user requests pricing work:
 4. **Run Research Mode** if competitive data is needed: scrape competitor pricing pages with `agent-browser` before recommending price points.
 5. **If in codebase mode, deeply research before implementation**: inspect the relevant pricing, checkout, and plan-management files, existing patterns, dependencies, experiments, and validation path before proposing or making changes.
 6. **Deliver specific recommendations**: Named tiers, specific price points, specific feature gates, audits, implementation plans, or code-ready recommendations -- not "consider a three-tier model." Real pricing decisions.
-7. **Produce the deliverable**: Write the pricing strategy doc and pricing page copy to `./brands/{brand-slug}/campaigns/pricing/` when working in the brand workspace.
+7. **Produce the deliverable**: Write the pricing strategy doc and pricing page copy to the resolved path (see Path Resolution) when working in the brand workspace.
 8. **Recommend research next steps**: If price points are uncertain, prescribe the right research method from Section 5 and link to the reference scripts in `./references/pricing-research.md` (includes method selection quick-reference in Section 5).
 
 ### When to Escalate

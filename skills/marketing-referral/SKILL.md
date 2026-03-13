@@ -19,6 +19,23 @@ You are a senior referral and partnership marketing strategist with deep experti
 
 ---
 
+## Path Resolution: Campaign vs Standalone
+
+**Campaign mode** — working within a named campaign:
+  → Save to `./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/referral/`
+  → Read campaign strategy at `./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/strategy.md`
+
+**Standalone mode** — evergreen or independent work:
+  → Save to `./brands/{brand-slug}/operations/referral/`
+
+**Legacy fallback** — old directory structure detected:
+  → Save to `./brands/{brand-slug}/campaigns/referral/`
+  → Suggest migration to new structure
+
+If unsure which mode, ask: "Is this part of a specific campaign, or standalone work?"
+
+---
+
 ## 1. Referral Program Design
 
 ### 1.1 Referral Program Types
@@ -434,7 +451,7 @@ Product integrations are the most durable partnership channel:
 
 ## 10. Outputs and Deliverables
 
-All referral, affiliate, and partnership deliverables save to `./brands/{brand-slug}/campaigns/referral/`.
+All referral, affiliate, and partnership deliverables save to the resolved path (see Path Resolution above).
 
 ### 10.1 Referral Program Brief (`referral-program-{YYYY-MM-DD}.md`)
 
@@ -457,7 +474,8 @@ Sections: Partner Overview, Campaign Objective, Activities table (Activity, Desc
 ## 11. File Organization
 
 ```
-./brands/{brand-slug}/campaigns/referral/
+# Campaign mode:
+./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/referral/
   referral-program-{YYYY-MM-DD}.md
   affiliate-program-{YYYY-MM-DD}.md
   partnerships/
@@ -470,6 +488,10 @@ Sections: Partner Overview, Campaign Objective, Activities table (Activity, Desc
     referral-report-{YYYY-MM}.md
     affiliate-report-{YYYY-MM}.md
     partnership-report-{YYYY-MM}.md
+
+# Standalone mode:
+./brands/{brand-slug}/operations/referral/
+  (same structure as above)
 ```
 
 ---
@@ -481,9 +503,9 @@ When the user requests referral, affiliate, or partnership marketing work:
 1. **Route the starting context first** (see Starting Context Router): blank-page strategy, existing codebase implementation, or live URL audit.
 2. **Read strategic context from the best available source**: brand context and SOSTAC first when available; otherwise use the codebase, live site, prior referral deliverables, analytics context, and user inputs.
 3. **Clarify scope**: Referral program design, affiliate program setup, strategic partnership, co-marketing campaign, word-of-mouth amplification, advocacy program, implementation work, or full referral strategy?
-4. **Assess current state**: Check `./brands/{brand-slug}/campaigns/referral/` for prior work. If in codebase mode, deeply inspect the relevant implementation files, existing patterns, dependencies, tracking model, and validation path before proposing or making changes.
+4. **Assess current state**: Check the resolved path (see Path Resolution) for prior work. If in codebase mode, deeply inspect the relevant implementation files, existing patterns, dependencies, tracking model, and validation path before proposing or making changes.
 5. **Deliver actionable output**: Specific program designs, commission structures, audits, implementation plans, partnership proposals, and co-marketing plans -- never vague advice. Every deliverable ties to the brand's economics and audience.
-6. **Save deliverables**: Write all outputs to `./brands/{brand-slug}/campaigns/referral/` when working in the brand workspace.
+6. **Save deliverables**: Write all outputs to the resolved path (see Path Resolution) when working in the brand workspace.
 7. **Recommend the first move**: Which program to launch first, which partners to approach, and what to measure.
 
 ### When to Escalate

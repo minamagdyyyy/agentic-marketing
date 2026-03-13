@@ -1,6 +1,6 @@
 ---
 name: marketing-guerrilla
-description: "Designs unconventional tactics, growth hacks, viral campaigns, and low-budget stunts. Triggers for 'growth hack', 'viral campaign', 'guerrilla marketing', 'unconventional tactic', 'low-budget marketing', or 'marketing stunt'."
+description: "Designs unconventional tactics, growth hacks, viral campaigns, and low-budget stunts. Triggers for 'growth hack', 'viral campaign', 'guerrilla marketing', 'unconventional tactic', 'low-budget marketing', or 'marketing stunt' — not structured referral/affiliate programs (use referral) or community platform management (use community). This skill owns scrappy, creative, one-off experiments."
 requires:
   - skill: https://github.com/vercel-labs/agent-browser
     name: agent-browser
@@ -24,6 +24,23 @@ You are a senior guerrilla marketing strategist and growth hacker with deep expe
 
 ---
 
+## Path Resolution: Campaign vs Standalone
+
+**Campaign mode** — working within a named campaign:
+  → Save to `./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/guerrilla/`
+  → Read campaign strategy at `./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/strategy.md`
+
+**Standalone mode** — evergreen or independent work:
+  → Save to `./brands/{brand-slug}/operations/guerrilla/`
+
+**Legacy fallback** — old directory structure detected:
+  → Save to `./brands/{brand-slug}/campaigns/guerrilla/`
+  → Suggest migration to new structure
+
+If unsure which mode, ask: "Is this part of a specific campaign, or standalone work?"
+
+---
+
 ## Research Mode: Viral & Growth Intelligence
 
 Use agent-browser to identify viral patterns, trending formats, and community opportunities before designing campaigns. Check `./brands/{brand-slug}/sostac/00-auto-discovery.md` for data already collected.
@@ -35,7 +52,7 @@ Use agent-browser to identify viral patterns, trending formats, and community op
 ```bash
 # Google Trends — category virality potential
 agent-browser --session guerrilla-research open "https://trends.google.com/trends/explore?q={category-keyword}&gprop=youtube" && agent-browser wait --load networkidle && agent-browser wait 3000
-agent-browser screenshot ./brands/{brand-slug}/campaigns/guerrilla/trends-research.png
+agent-browser screenshot ./brands/{brand-slug}/operations/guerrilla/trends-research.png
 agent-browser get text body
 
 # YouTube Trending in category
@@ -486,7 +503,7 @@ When direct attribution is impossible, measure:
 
 ## 9. Outputs and Deliverables
 
-All guerrilla marketing deliverables save to `./brands/{brand-slug}/campaigns/guerrilla/`.
+All guerrilla marketing deliverables save to the resolved path (see Path Resolution above).
 
 ### 9.1 Guerrilla Campaign Concept (`campaign-concept-{name}-{YYYY-MM-DD}.md`)
 
@@ -509,14 +526,19 @@ Sections: Concept (one sentence), Brand Connection, Stunt Category, Logistics ta
 ## 10. File Organization
 
 ```
-./brands/{brand-slug}/campaigns/guerrilla/
+# Campaign mode:
+./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/guerrilla/
   guerrilla-strategy-{YYYY-MM-DD}.md
   campaign-concept-{name}-{YYYY-MM-DD}.md
   stunt-brief-{name}-{YYYY-MM-DD}.md
   competitive-disruption-{competitor}-{YYYY-MM-DD}.md
-  growth-experiments/  (experiment plans + backlog)
-  referral-program/    (referral program design)
-  performance/         (monthly guerrilla reports)
+  growth-experiments/
+  referral-program/
+  performance/
+
+# Standalone mode:
+./brands/{brand-slug}/operations/guerrilla/
+  (same structure as above)
 ```
 
 ---
@@ -528,9 +550,9 @@ When the user requests guerrilla marketing or growth hacking work:
 1. **Read brand context and SOSTAC** (Section 0) when available, then continue from the best available context.
 2. **Clarify scope**: Budget guerrilla tactics, viral campaign, competitive disruption, growth experiments, referral program, or full guerrilla strategy?
 3. **Assess risk tolerance**: Conservative brands need lower-risk tactics. Challenger brands can push boundaries. Ask if unclear.
-4. **Assess current state**: Check `./brands/{brand-slug}/campaigns/guerrilla/` for prior work.
+4. **Assess current state**: Check the resolved path (see Path Resolution) for prior work.
 5. **Deliver actionable output**: Specific campaigns, experiment plans, stunt briefs, competitive analyses -- never vague inspiration. Every deliverable includes a risk assessment.
-6. **Save deliverables**: Write all outputs to `./brands/{brand-slug}/campaigns/guerrilla/`.
+6. **Save deliverables**: Write all outputs to the resolved path (see Path Resolution).
 7. **Recommend the first move**: What to execute first, what to test, and what to measure.
 
 ### When to Escalate

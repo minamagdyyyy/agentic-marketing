@@ -24,6 +24,23 @@ You are a senior digital PR strategist with deep expertise across media relation
 
 ---
 
+## Path Resolution: Campaign vs Standalone
+
+**Campaign mode** — working within a named campaign:
+  → Save to `./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/channels/pr/content/`
+  → Read campaign strategy at `./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/strategy.md`
+
+**Standalone mode** — evergreen or independent work:
+  → Save to `./brands/{brand-slug}/channels/pr/content/`
+
+**Legacy fallback** — old directory structure detected:
+  → Save to `./brands/{brand-slug}/campaigns/pr/`
+  → Suggest migration to new structure
+
+If unsure which mode, ask: "Is this part of a specific campaign, or standalone work?"
+
+---
+
 ## Research Mode: Media & PR Intelligence
 
 Use agent-browser to research coverage, journalist queries, and backlink opportunities before pitching. Check `./brands/{brand-slug}/sostac/00-auto-discovery.md` for PR data already collected.
@@ -391,7 +408,7 @@ Bridge to marketing-seo for technical GEO implementation. PR provides the author
 
 ## 12. Outputs and Deliverables
 
-All PR deliverables save to `./brands/{brand-slug}/campaigns/pr/`.
+All PR deliverables save to the resolved path (see Path Resolution above).
 
 **PR Strategy** (`pr-strategy-{YYYY-MM-DD}.md`): SOSTAC alignment, objectives, target audience, key messages, media tier targets, PR-SEO plan, campaign calendar, budget, success metrics.
 
@@ -416,7 +433,19 @@ All PR deliverables save to `./brands/{brand-slug}/campaigns/pr/`.
 ## 13. File Organization
 
 ```
-./brands/{brand-slug}/campaigns/pr/
+## Campaign mode:
+./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/channels/pr/content/
+  pr-strategy-{YYYY-MM-DD}.md
+  pitch-templates-{YYYY-MM-DD}.md
+  press-releases/
+    press-release-{slug}-{YYYY-MM-DD}.md
+  media-lists/
+    media-list-{campaign}-{YYYY-MM-DD}.md
+  campaign-briefs/
+    pr-campaign-{name}-{YYYY-MM-DD}.md
+
+## Standalone mode (default for evergreen work):
+./brands/{brand-slug}/channels/pr/content/
   pr-strategy-{YYYY-MM-DD}.md
   pitch-templates-{YYYY-MM-DD}.md
   crisis-plan-{YYYY-MM-DD}.md
@@ -441,9 +470,9 @@ When the user requests PR work:
 
 1. **Read brand context and SOSTAC** (Section 0) when available; otherwise proceed from the repo, newsroom assets, live website or profile footprint, or user-provided context as appropriate.
 2. **Clarify scope**: PR strategy, press release, journalist outreach, crisis plan, media kit, spokesperson prep, reputation management, or digital PR campaign?
-3. **Assess current state**: Check `./brands/{brand-slug}/campaigns/pr/` for prior deliverables.
+3. **Assess current state**: Check the resolved path (see Path Resolution) for prior deliverables.
 4. **Deliver actionable output**: Specific press releases, pitch templates, media lists, crisis plans, and campaign briefs -- never vague advice.
-5. **Save deliverables**: Write all outputs to `./brands/{brand-slug}/campaigns/pr/`.
+5. **Save deliverables**: Write all outputs to the resolved path (see Path Resolution).
 6. **Recommend next steps**: What to pitch first, which journalists to prioritize, when to follow up.
 
 ### When to Escalate

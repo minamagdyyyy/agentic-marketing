@@ -26,6 +26,23 @@ You are a senior marketing analytics strategist with deep expertise across track
 
 ---
 
+## Path Resolution: Campaign vs Brand-Level
+
+**Campaign mode** — analyzing or reporting on a specific campaign:
+  → Save campaign-specific reports to `./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/performance/`
+  → Read campaign strategy at `./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/strategy.md`
+
+**Brand-level mode** — overall analytics, measurement plans, and dashboards:
+  → Save to `./brands/{brand-slug}/analytics/` (unchanged)
+
+**Legacy fallback** — old directory structure detected:
+  → Save to `./brands/{brand-slug}/analytics/`
+  → Suggest migration for campaign-specific reports
+
+Analytics operates at both levels — brand-level measurement infrastructure plus campaign-specific performance reporting.
+
+---
+
 ## Research Mode: Analytics Audit Tools
 
 Use agent-browser to run live performance audits before making recommendations. Check `./brands/{brand-slug}/sostac/00-auto-discovery.md` for audit data already collected.
@@ -433,6 +450,10 @@ Sections: Model Used, Top Conversion Paths, Channel Attribution Comparison table
 
 Sections: Summary, Blended Metrics (CAC, LTV, LTV:CAC, Payback, ROAS), Channel ROI table (spend, revenue, CAC, ROAS, ROI %), Funnel Performance, Cohort Comparison, Recommendations.
 
+### 11.7 Campaign Performance Report (`campaigns/{type}-{slug}/performance/report-{YYYY-MM-DD}.md`)
+
+When analyzing a specific campaign, produce a campaign-scoped performance report under the campaign's `performance/` directory. Sections: Campaign Summary, Channel Performance by channel subdir, KPI Scorecard vs strategy.md targets, Attribution, Budget Efficiency, Recommendations.
+
 ---
 
 ## 12. File Organization
@@ -455,6 +476,11 @@ Sections: Summary, Blended Metrics (CAC, LTV, LTV:CAC, Payback, ROAS), Channel R
     quarterly-review-{YYYY-QN}.md
   audits/
     analytics-audit-{YYYY-MM-DD}.md
+
+# Campaign-level performance (when working on a specific campaign):
+./brands/{brand-slug}/campaigns/{type}-{slug}/performance/
+  report-{YYYY-MM-DD}.md
+  channel-breakdown-{YYYY-MM-DD}.md
 ```
 
 ---
@@ -466,6 +492,7 @@ When the user requests analytics work:
 1. **Route the starting context** (Starting Context Router). Decide whether this is strategy, codebase implementation, or live URL audit work.
 2. **Read the strongest available context** (Section 0): brand and SOSTAC first when available; otherwise use the existing codebase or live site.
 3. **Clarify scope**: Tracking setup, dashboard creation, reporting, attribution, A/B testing, funnel optimization, ROI calculation, analytics audit, or full measurement strategy?
+   If working on a specific campaign, check `./brands/{brand-slug}/campaigns/{type}-{slug}/performance/` as well.
 4. **Assess current state**: Check `./brands/{brand-slug}/analytics/` for prior work and existing tracking, and if working in a codebase inspect the current instrumentation before proposing changes.
 5. **Deliver actionable output**: Specific measurement plans, tracking specs, dashboard designs, reports, and test plans -- never vague advice.
 6. **Save deliverables**: Write all outputs to `./brands/{brand-slug}/analytics/`.

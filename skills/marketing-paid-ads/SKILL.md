@@ -28,6 +28,23 @@ For modern and emerging practices across all platforms, consult `./references/be
 
 ---
 
+## Path Resolution: Campaign vs Standalone
+
+**Campaign mode** — working within a named campaign:
+  → Save to `./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/channels/paid-ads/content/`
+  → Read campaign strategy at `./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/strategy.md`
+
+**Standalone mode** — evergreen or independent work:
+  → Save to `./brands/{brand-slug}/channels/paid-ads/content/`
+
+**Legacy fallback** — old directory structure detected:
+  → Save to `./brands/{brand-slug}/campaigns/paid-ads/`
+  → Suggest migration to new structure
+
+If unsure which mode, ask: "Is this part of a specific campaign, or standalone work?"
+
+---
+
 ## Research Mode: Competitive Ad Intelligence
 
 Use `agent-browser` to gather live competitor ad data before building campaigns. Start a named session to share context across commands.
@@ -38,7 +55,7 @@ Use `agent-browser` to gather live competitor ad data before building campaigns.
 
 ```bash
 agent-browser --session ads-research open "https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=ALL&q={competitor-name}&search_type=keyword_unordered" && agent-browser wait --load networkidle && agent-browser wait 4000
-agent-browser screenshot ./brands/{brand-slug}/campaigns/paid-ads/competitor-{n}-meta-ads.png
+agent-browser screenshot ./brands/{brand-slug}/channels/paid-ads/content/competitor-{n}-meta-ads.png
 agent-browser get text body
 # Extract: number of active ads, ad formats, copy themes, offer types, CTA patterns
 # Long-running ads (months) = proven performers -- note these specifically
@@ -65,7 +82,7 @@ agent-browser get text body
 ```bash
 agent-browser --session ads-research open {competitor-landing-page-url} && agent-browser wait --load networkidle
 agent-browser get text body
-agent-browser screenshot ./brands/{brand-slug}/campaigns/paid-ads/competitor-{n}-landing-page.png
+agent-browser screenshot ./brands/{brand-slug}/channels/paid-ads/content/competitor-{n}-landing-page.png
 # Extract: headline, value proposition, form fields, CTA, trust signals, offer structure
 ```
 
@@ -324,7 +341,7 @@ Always verify character counts before submitting. Truncated copy reads as unprof
 
 ### 6.6 Creative Iteration Log
 
-Document every creative test in a running log to build institutional knowledge. Save as `./brands/{brand-slug}/campaigns/paid-ads/creative/iteration-log-{platform}-{YYYY-MM-DD}.md`.
+Document every creative test in a running log to build institutional knowledge. Save as `creative/iteration-log-{platform}-{YYYY-MM-DD}.md` within the resolved path.
 
 Per round, record:
 
@@ -403,7 +420,7 @@ This log is permanent — it compounds value over time. Keep losing entries; the
 
 ## 8. Actionable Outputs and Deliverables
 
-All paid ads deliverables save to `./brands/{brand-slug}/campaigns/paid-ads/`.
+All paid ads deliverables save to the resolved path (see Path Resolution above).
 
 For complete deliverable templates, see `./references/deliverable-templates.md`.
 
@@ -419,7 +436,15 @@ For complete deliverable templates, see `./references/deliverable-templates.md`.
 ## 9. File Organization
 
 ```
-./brands/{brand-slug}/campaigns/paid-ads/
+## Campaign mode:
+./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/channels/paid-ads/content/
+  campaign-brief-{name}-{YYYY-MM-DD}.md
+  ad-copy-{platform}-{campaign}-{YYYY-MM-DD}.md
+  audience-spec-{platform}-{YYYY-MM-DD}.md
+  budget-plan-{YYYY-MM}.md
+
+## Standalone mode (default for evergreen work):
+./brands/{brand-slug}/channels/paid-ads/content/
   campaign-brief-{name}-{YYYY-MM-DD}.md
   ad-copy-{platform}-{campaign}-{YYYY-MM-DD}.md
   audience-spec-{platform}-{YYYY-MM-DD}.md
@@ -441,9 +466,9 @@ When the user requests paid ads work:
 
 1. **Read brand context and SOSTAC** (Section 0) when available; otherwise proceed from the codebase, live site, tracking and analytics setup, existing creative assets, or user-provided context as appropriate.
 2. **Clarify scope**: Which platform? Campaign type? Funnel stage? New campaign or optimization?
-3. **Assess current state**: Check `./brands/{brand-slug}/campaigns/paid-ads/` for prior work.
+3. **Assess current state**: Check the resolved path (see Path Resolution) for prior work.
 4. **Deliver actionable output**: Specific campaigns, copy, audiences, budgets -- never vague advice.
-5. **Save deliverables**: Write all outputs to `./brands/{brand-slug}/campaigns/paid-ads/`.
+5. **Save deliverables**: Write all outputs to the resolved path (see Path Resolution).
 6. **Recommend next steps**: What to launch first, what to test, when to optimize.
 
 ### When to Escalate

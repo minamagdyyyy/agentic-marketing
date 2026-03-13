@@ -26,6 +26,23 @@ You are a senior conversion rate optimization strategist with deep expertise acr
 
 ---
 
+## Path Resolution: Campaign vs Standalone
+
+**Campaign mode** — working within a named campaign:
+  → Save to `./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/cro/`
+  → Read campaign strategy at `./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/strategy.md`
+
+**Standalone mode** — evergreen or independent work:
+  → Save to `./brands/{brand-slug}/operations/cro/`
+
+**Legacy fallback** — old directory structure detected:
+  → Save to `./brands/{brand-slug}/campaigns/cro/`
+  → Suggest migration to new structure
+
+If unsure which mode, ask: "Is this part of a specific campaign, or standalone work?"
+
+---
+
 ## Research Mode: Live Page Auditing
 
 Use `agent-browser` to visit and analyze the actual page or flow being optimized. Always prefer real data over assumptions.
@@ -37,7 +54,7 @@ Use `agent-browser` to visit and analyze the actual page or flow being optimized
 ```bash
 # Open the page and capture current state
 agent-browser --session cro-audit open "https://{page-url}" && agent-browser wait --load networkidle && agent-browser wait 2000
-agent-browser screenshot ./brands/{brand-slug}/campaigns/cro/screenshots/audit-{page-name}.png
+agent-browser screenshot ./brands/{brand-slug}/operations/cro/screenshots/audit-{page-name}.png
 agent-browser get text body
 # Extract: headline, subheadline, CTA text, trust signals visible, above-fold content
 ```
@@ -47,7 +64,7 @@ agent-browser get text body
 ```bash
 # Check mobile rendering (320px viewport)
 agent-browser --session cro-audit set viewport 390 844
-agent-browser screenshot ./brands/{brand-slug}/campaigns/cro/screenshots/audit-{page-name}-mobile.png
+agent-browser screenshot ./brands/{brand-slug}/operations/cro/screenshots/audit-{page-name}-mobile.png
 agent-browser get text body
 # Note: CTA thumb-friendliness, font sizes, form usability, popup behavior
 ```
@@ -65,7 +82,7 @@ agent-browser get text body
 ```bash
 # Visit top 2-3 competitor pages for the same conversion goal
 agent-browser --session cro-audit open "https://{competitor-page}" && agent-browser wait --load networkidle
-agent-browser screenshot ./brands/{brand-slug}/campaigns/cro/screenshots/competitor-{name}.png
+agent-browser screenshot ./brands/{brand-slug}/operations/cro/screenshots/competitor-{name}.png
 agent-browser get text body
 # Note: headline patterns, CTA copy, trust signals, form field count
 ```
@@ -75,7 +92,7 @@ agent-browser get text body
 ```bash
 # If access to analytics dashboard exists, capture funnel view
 agent-browser --session cro-audit open "https://{analytics-dashboard-url}" && agent-browser wait --load networkidle && agent-browser wait 3000
-agent-browser screenshot ./brands/{brand-slug}/campaigns/cro/screenshots/funnel-current.png
+agent-browser screenshot ./brands/{brand-slug}/operations/cro/screenshots/funnel-current.png
 ```
 
 Close the audit session when done: `agent-browser --session cro-audit close`
@@ -296,7 +313,7 @@ The same page can need completely different optimization depending on where visi
 
 ## 8. Deliverables
 
-All CRO work saves to `./brands/{brand-slug}/campaigns/cro/`.
+All CRO work saves to the resolved path (see Path Resolution above).
 
 | Deliverable | Filename | Key Sections |
 |---|---|---|
@@ -309,17 +326,18 @@ All CRO work saves to `./brands/{brand-slug}/campaigns/cro/`.
 File structure:
 
 ```
-./brands/{brand-slug}/campaigns/cro/
+# Campaign mode:
+./brands/{brand-slug}/campaigns/{type}-{campaign-slug}/cro/
   audit-{page-name}-{YYYY-MM-DD}.md
   audit-signup-{YYYY-MM-DD}.md
   audit-onboarding-{YYYY-MM-DD}.md
   test-brief-{hypothesis-slug}-{YYYY-MM-DD}.md
   cro-roadmap-{YYYY-MM-DD}.md
   screenshots/
-    audit-{page-name}.png
-    audit-{page-name}-mobile.png
-    competitor-{name}.png
-    funnel-current.png
+
+# Standalone mode:
+./brands/{brand-slug}/operations/cro/
+  (same structure as above)
 ```
 
 ---
@@ -379,7 +397,7 @@ When the user requests CRO work:
 5. **Research the page or implementation**: use Research Mode for live URLs, and for codebase work inspect the current flow, components, instrumentation, and constraints before proposing changes.
 6. **Apply the universal priority framework** (Section 2). Start with value proposition, not button colors.
 7. **Deliver structured output** (Section 5). Quick Wins first, then High-Impact, then Test Hypotheses, then Copy Alternatives.
-8. **Save deliverables** to `./brands/{brand-slug}/campaigns/cro/`.
+8. **Save deliverables** to the resolved path (see Path Resolution).
 9. **Recommend next steps**: What to ship immediately, what to test, when to review results.
 
 ### When to escalate

@@ -269,7 +269,7 @@ Create a chart with price on the X-axis and cumulative percentage of respondents
 
 ### 2.3 Synthesizing Interview Findings
 
-After 10-15 interviews, create a synthesis document at `./brands/{brand-slug}/campaigns/pricing/research/interview-synthesis-{YYYY-MM-DD}.md` with:
+After 10-15 interviews, create a synthesis document at `./brands/{brand-slug}/operations/pricing/research/interview-synthesis-{YYYY-MM-DD}.md` (or `campaigns/{type}-{slug}/pricing/research/` if campaign-tied) with:
 
 - **Ceiling range**: The range of monthly prices at which customers said they would reconsider
 - **Value statements in customer language**: Direct quotes about what they would lose without the product
@@ -408,7 +408,7 @@ Thank you for being part of [Brand Name] for so long.
 
 ### 4.1 Purpose
 
-Use this template to structure the competitive pricing intelligence gathered during Research Mode. Save the completed template to `./brands/{brand-slug}/campaigns/pricing/research/competitive-pricing-analysis-{YYYY-MM-DD}.md`.
+Use this template to structure the competitive pricing intelligence gathered during Research Mode. Save the completed template to `./brands/{brand-slug}/operations/pricing/research/competitive-pricing-analysis-{YYYY-MM-DD}.md` (or `campaigns/{type}-{slug}/pricing/research/` if campaign-tied).
 
 ---
 
